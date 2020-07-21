@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Santiago\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add RadioButton
+  C:\Program Files\nodejs\node.exe C:\Users\Santiago\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-gesto-handler react-native-reanimated@~1.9.0
 
 PATH: 
   C:\Users\Santiago\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Santiago\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Common Files\Schneider Electric Shared\SSTA;C:\Program Files (x86)\Common Files\Schneider Electric Shared\SRCSDK;D:\Program Files\MATLAB\R2013b\runtime\win64;D:\Program Files\MATLAB\R2013b\bin;D:\Program Files\MATLAB\R2013b\polyspace\bin;D:\Program Files (x86)\QuickTime\QTSystem;D:\CCSCPA~1;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files\PuTTY;D:\FACULT~1\PICCCO~1\PICC;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\Santiago\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Users\Santiago\AppData\Local\Programs\Python\Python37-32;D:\PYTHON\Scripts;D:\PYTHON;C:\Users\Santiago\AppData\Local\Microsoft\WindowsApps;C:\Users\Santiago\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Santiago\AppData\Roaming\npm;C:\Users\Santiago\AppData\Local\atom\bin;C:\Program Files\heroku\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/RadioButton: Not found
+  Error: https://registry.yarnpkg.com/react-native-gesto-handler: Not found
       at Request.params.callback [as _callback] (C:\Users\Santiago\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66987:18)
       at Request.self.callback (C:\Users\Santiago\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140748:22)
       at Request.emit (events.js:198:13)
@@ -55,12 +55,12 @@ npm manifest:
       "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.1.tar.gz",
       "react-native-elements": "^2.0.4",
       "react-native-gesture-handler": "~1.6.0",
-      "react-native-paper": "^3.10.1",
+      "react-native-paper": "^4.0.1",
       "react-native-reanimated": "~1.9.0",
       "react-native-safe-area-context": "^3.0.7",
       "react-native-screens": "~2.9.0",
       "react-native-simple-radio-button": "^2.7.4",
-      "react-native-tab-view": "^2.14.4",
+      "react-native-tab-view": "^2.15.0",
       "react-native-web": "~0.11.7",
       "react-navigation": "^4.4.0",
       "react-navigation-stack": "^2.8.2"
@@ -5134,10 +5134,10 @@ Lockfile:
       prop-types "^15.6.2"
       react-native-iphone-x-helper "^1.0.3"
   
-  react-native-paper@^3.10.1:
-    version "3.10.1"
-    resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-3.10.1.tgz#4fca72b9f154fc5ad3710d633787c55e878e8f36"
-    integrity sha512-rl1B9z/S3Q+D4lzTqQOVjpKTd7eLOUhxp7HRufsw8lq4hznAAckynelxOkHxZLHyWT1w9SX4Hdv654i4Uo1KEg==
+  react-native-paper@^4.0.1:
+    version "4.0.1"
+    resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.0.1.tgz#13d2272757fb738113582e900787f365cfa77c74"
+    integrity sha512-C1kHZ5sS3QU2XdmdHnLAzp88T+FWtkOa+43wYjBClevsDvi72aRf6H9PTs8GS69E8tlNHym3kbVcENgnDPMqhQ==
     dependencies:
       "@callstack/react-theme-provider" "^3.0.5"
       color "^3.1.2"
@@ -5185,10 +5185,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-status-bar-height/-/react-native-status-bar-height-2.5.0.tgz#bc0fb85230603850aab9667ee8111a62954de90c"
     integrity sha512-sYBCPYA/NapBSHkdm/IVL4ID3LLlIuLqINi2FBDyMkc2BU9pfSGOtkz9yfxoK39mYJuTrlTOQ7mManARUsYDSA==
   
-  react-native-tab-view@^2.14.4:
-    version "2.14.4"
-    resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.14.4.tgz#740007e62c8723c6813b8c8a05caaaf82c816620"
-    integrity sha512-oqkCflPFuZwDTbyY2WaN0377akSsmcttuYACR9LT7htZfO/tKR2Z/ynj1tbv2cz2esGuVICoga9cetN1lPimog==
+  react-native-tab-view@^2.15.0:
+    version "2.15.0"
+    resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.15.0.tgz#71b0c87f7cb2cde1d740f7130c17f213f2cbcaa0"
+    integrity sha512-rCQPNp0N4t2IZHTVpdb/eddJ9kTLC8QlD/8Ce1+z2Fk3Evk0HPhuhTAW3mfa+thzRXkXYxxsS7QcIjJKs2Wu3w==
   
   react-native-vector-icons@^6.6.0:
     version "6.7.0"
