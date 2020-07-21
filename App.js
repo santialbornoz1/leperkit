@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions,TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight } from 'react-native';
 // import { HomeScreen } from './screens/HomeScreen';
 // import { NotificationsScreen } from './screens/NotificationScreen';
 import { Icon } from 'native-base';
@@ -10,14 +10,15 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Header } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
+import Card  from '../Domus/components/card.js';
 
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 5 }}>
         <Text style={styles.textCenter}>Pagina home</Text>
-        <View style={{margin: 10}}>
-        <Button title="Quiero armar un nuevo leperkit" onPress={() => navigation.push('Detalle')} />
+        <View style={{ margin: 10 }}>
+          <Button title="Quiero armar un nuevo leperkit" onPress={() => navigation.push('Detalle')} />
         </View>
       </ScrollView>
     </View>
@@ -29,12 +30,12 @@ const UIScreen = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 5 }}>
         <Text>Pagina UI</Text>
-        <View style={{margin: 10}}>
-        <Button title="Ver mis UI" onPress={() => navigation.push('Detalle')} />
+        <View style={{ margin: 10 }}>
+          <Button title="Ver mis UI" onPress={() => navigation.push('Detalle')} />
         </View>
-        <View style={{margin: 10}}>
-        <Button title="Ver Catalogo" onPress={() => navigation.push('Detalle')} />
-          </View>
+        <View style={{ margin: 10 }}>
+          <Button title="Ver Catalogo" onPress={() => navigation.push('Detalle')} />
+        </View>
       </ScrollView>
     </View>
   )
@@ -45,35 +46,21 @@ const DetalleScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 5 }}>
-        <Text>¿De parte se compone?</Text>
-          <Text style={styles.textCenter}>UI</Text>
-        <TouchableHighlight onPress={() => navigation.push('UI')}>
-          <Image
-            style={styles.tinyLogo}
-            source={require('../Domus/resources/images/teclado-numerico.jpg')}
+        <Text style={styles.titleDetailScreen}>¿De parte se compone?</Text>
+          <Card source={"../resources/images/teclado-numerico.jpg"} titleCard={"UI"}
+          text="Lorsem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          
           />
-        </TouchableHighlight >
+          <Card source={"../resources/images/teclado-numerico.jpg"} titleCard={"Modulos"}
+          text="¿Qué es Lorem Ipsum?
+          Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor desconocido usó una galería de textos."
+          />
+          <Card source={"../resources/images/teclado-numerico.jpg"} titleCard={"Componentes o circuitos externos"}
+          text="¿Por qué lo usamos?
+          Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo 'Contenido aquí, contenido aquí.'"
+          />
         <View>
-          <Text style={styles.textCenter}>Modulos</Text>
-          <Image
-            style={styles.tinyLogo}
-            source={require('../Domus/resources/images/teclado-numerico.jpg')}
-          />
         </View>
-        <View>
-          <Text style={styles.textCenter}>Componentes o cirucuitos externos</Text>
-          <Image
-            style={styles.tinyLogo}
-            source={require('../Domus/resources/images/teclado-numerico.jpg')}
-          />
-        </View>
-        {/* <View>
-          <Text style={styles.textCenter}>Componentes o cirucuitos externos</Text>
-          <Image
-            style={styles.tinyLogo}
-            source={require('../Domus/resources/images/teclado-numerico.jpg')}
-          />
-        </View> */}
       </ScrollView>
     </View>
   )
@@ -89,7 +76,7 @@ const AppNavigator = createStackNavigator({
   UI: {
     screen: UIScreen,
   }
-}, { initialRouteName: 'Home' });
+}, { initialRouteName: 'Detalle' });
 
 export default createAppContainer(AppNavigator);
 
@@ -107,50 +94,20 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
-  textCenter:{
-    // backgroundColor: 'red',
+  textCenter: {
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center'
   },
   drawer: {
     backgroundColor: 'black'
+  },
+  titleDetailScreen:{
+    fontSize: 30,
+    textAlign: 'center',
   }
 });
 
 
 
 
-
-// const Drawer = createDrawerNavigator();
-
-// const AppDrawer = () => {
-//   return (
-//     <Drawer.Navigator initialRouteName="Home" drawerContent={props => <Sidebar {...props} />}>
-//       <Drawer.Screen name="Home" component={HomeScreen}
-//         options={{
-//           drawerIcon: ({ }) => (
-//             <Icon name="home" style={{ fontSize: 20, color: '#0077CC' }} />
-//           ),
-//         }}
-//       />
-//       <Drawer.Screen name="Información sobre LBBs" component={NotificationsScreen}
-//         options={{
-//           drawerIcon: ({ }) => (
-//             <Icon name="options" style={{ fontSize: 20, color: '#0077CC' }} />
-//           ),
-//         }}
-//       />
-//     </Drawer.Navigator>
-//   )
-// }
-
-
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <AppDrawer />
-//     </NavigationContainer>
-//   );
-// }
