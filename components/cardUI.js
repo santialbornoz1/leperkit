@@ -29,12 +29,20 @@ const CardUI = (props) => {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.blue}>{props.text}</Text>
-                    <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
-                        <Row data={data.tableHead} style={styles.head} textStyle={styles.text} />
-                        <Rows data={data.tableData} textStyle={styles.text} />
-                    </Table>
-                    {/* <Button style={{ marginLeft: 20 }} title="Ver mas.." ></Button> */}
-
+                </View>
+                <View style={styles.textContainer}>
+                    <View style={{ margin: 3 }}>
+                        <View>
+                            <Text style={{color: 'green'}}>Estado: Libre</Text>
+                        </View>
+                        <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                            <Row data={data.tableHead} style={styles.head} textStyle={styles.text} />
+                            <Rows data={data.tableData} textStyle={styles.text} />
+                        </Table>
+                    </View>
+                    <View style={{ margin: 3 }}>
+                        <Button style={{ marginLeft: 20 }} title="Datasheet" ></Button>
+                    </View>
                 </View>
                 {/* <View style={styles.backgroundProb}>
                 </View> */}
@@ -50,7 +58,7 @@ const styles = StyleSheet.create({
     touchableCard: {
         height: 'auto',
         // flex: 1,
-        height: 200,
+        height: 220,
         flexDirection: 'row',
         borderColor: '#D2DBE0',
         borderWidth: 3,
@@ -105,6 +113,9 @@ const styles = StyleSheet.create({
     },
     backgroundProb: {
         backgroundColor: 'red'
+    },
+    text: {
+        textAlign: 'center',
     }
 });
 
