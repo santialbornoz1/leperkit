@@ -1,19 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight } from 'react-native';
 import assets from '../assets/assets.js';
-
-// TABLE
-import { Table, Row, Rows } from 'react-native-table-component';
-data = {
-    tableHead: ['Usa los pines'],
-    tableData: [
-        ['U1', ''],
-        ['U2', 'X'],
-        ['U3', 'X'],
-        ['U4', ''],
-        ['U5', ''],
-    ]
-}
+import TableLepper from '../components/table.js';
 
 const CardUI = (props) => {
     const onPressCard = (e) => {
@@ -32,20 +20,22 @@ const CardUI = (props) => {
                 </View>
                 <View style={styles.textContainer}>
                     <View style={{ margin: 3 }}>
-                        <View>
-                            <Text style={{color: 'green'}}>Estado: Libre</Text>
-                        </View>
-                        <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
-                            <Row data={data.tableHead} style={styles.head} textStyle={styles.text} />
-                            <Rows data={data.tableData} textStyle={styles.text} />
-                        </Table>
+                        {props.isAvaiable ?
+                            <View>
+                                <Text style={{ color: 'green', textAlign: 'center' }}>Libre</Text>
+                            </View>
+                            :
+                            <View>
+                                <Text style={{ color: 'red', textAlign: 'center' }}>Usado en {props.usedIn}</Text>
+                            </View>
+                        }
+                        <TableLepper data={props.data} />
                     </View>
                     <View style={{ margin: 3 }}>
                         <Button style={{ marginLeft: 20 }} title="Datasheet" ></Button>
                     </View>
                 </View>
-                {/* <View style={styles.backgroundProb}>
-                </View> */}
+
             </View>
         </TouchableHighlight>
     )
