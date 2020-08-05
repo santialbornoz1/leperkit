@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
-import CardProbing from '../../Domus/components/Card/Card.js';
+import CardProbing from '../../frontend/components/Card/Card.js';
 // TAB VIEW
 import { TabView, SceneMap } from 'react-native-tab-view';
 dataPulsadores = {
@@ -23,6 +24,10 @@ dataTeclado4x4 = {
         ['U4', '']
     ]
 }
+
+
+
+
 //PESTAÑAS UI
 const FirstRoute = ({ navigation }) => (
     <View style={[styles.scene, { backgroundColor: '#ffffff' }]}>
@@ -54,7 +59,7 @@ const SecondRoute = () => (
             isAvaiable={false}
             usedIn={"'Panel de control'"}
             urlDetail={"http://www.bolanosdj.com.ar/MOVIL/ARDUINO2/segmentos7x4.pdf"}
-            />
+        />
     </View>
 );
 
@@ -81,6 +86,17 @@ const initialLayout = { width: Dimensions.get('window').width };
 // TAB VIEW
 
 const UIDetailScreen = ({ navigation }) => {
+    const [dataUser, setDataUser] = useState([]);
+    useEffect(() => {
+        fetch("http://192.168.100.18:4000/test")
+            .then((response) => response.json())
+            .then((responseData) => {
+                setDataUser(responseData);
+                //    console.log(responseData);
+            })
+    }, []);
+
+
     const scrollEnabled = false;
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
@@ -97,12 +113,31 @@ const UIDetailScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }} scrollEnabled={scrollEnabled}>
-                <TabView
+                {/* <TabView
                     navigationState={{ index, routes }}
                     renderScene={renderScene}
                     onIndexChange={setIndex}
                     initialLayout={initialLayout}
-                />
+                /> */}
+                {/* <View style={[styles.scene, { backgroundColor: '#ffffff' }]}>
+                    ACA VA EL MAPEO DE TODOS LOS UI IN
+                    <CardProbing imagePath={'ochoPulsadores'} titleCard={"Pulsadores"} text="Descripcion de los pulsadores."
+                        data={dataPulsadores} isAvaiable={true} usedIn="" urlDetail={"http://site.gravitech.us/Components/BUTT-4/BUTT-4_datasheet.pdf"} />
+                    <View style={styles.buttons}>
+                        <Button title="Agregar un nuevo UI a 'Mis UI'" />
+                    </View>
+                    <View style={styles.buttons}>
+                        <Button title="Ver Catalogo Del Market" onPress={() => { Linking.openURL("http://africau.edu/images/default/sample.pdf") }}></Button>
+                    </View>
+                </View> */}
+                {dataUser.map((item, index) =>
+                    <View>
+                        <Text>Index: {index}</Text>
+                        <Text>Id del usuario: {item.userId}</Text>
+                        <CardProbing imagePath={'ochoPulsadores'} titleCard={"Pulsadores"} text="Descripcion de los pulsadores."
+                        data={dataPulsadores} isAvaiable={true} usedIn="" urlDetail={"http://site.gravitech.us/Components/BUTT-4/BUTT-4_datasheet.pdf"} />
+                    </View>
+                )}
             </ScrollView>
         </View>
     )

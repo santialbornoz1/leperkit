@@ -1,5 +1,6 @@
 import * as React from 'react';
-import CardProbing from '../../Domus/components/Card/Card.js';
+import  { useState, useEffect } from 'react';
+import CardProbing from '../../frontend/components/Card/Card.js';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
 
 // TAB VIEW
@@ -8,7 +9,7 @@ import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, 
 
 const CardProbingScreen = (props) => {
   const scrollEnabled = false;
-  
+
 dataPulsadores = {
     tableHead: ['Usa los pines'],
     tableData: [

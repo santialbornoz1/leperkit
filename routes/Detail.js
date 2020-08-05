@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label } from 'react-native';
-import Card from '../../Domus/components/card.js';
+import Card from '../../frontend/components/card.js';
 
 // TAB VIEW
 
