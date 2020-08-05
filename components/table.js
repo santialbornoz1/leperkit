@@ -23,7 +23,6 @@ export default TableLepper;
 const styles = StyleSheet.create({
     touchableCard: {
         height: 'auto',
-        // flex: 1,
         height: 220,
         flexDirection: 'row',
         borderColor: '#D2DBE0',
