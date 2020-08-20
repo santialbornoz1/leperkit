@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styles from '../styles';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label } from 'react-native';
 import Card from '../../frontend/components/card.js';
 
@@ -38,39 +39,6 @@ const DetalleScreen = ({ navigation }) => {
 }
 
 export default DetalleScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    height: 'auto',
-    flex: 1,
-    backgroundColor: '#fff',
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  tinyLogo: {
-    width: 200,
-    height: 200,
-  },
-  textCenter: {
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  drawer: {
-    backgroundColor: 'black'
-  },
-  titleDetailScreen: {
-    fontSize: 30,
-    textAlign: 'center',
-    margin: 10
-  },
-  scene: {
-    flex: 1,
-  },
-  buttons: {
-    margin: 10
-  }
-});
 
 
 

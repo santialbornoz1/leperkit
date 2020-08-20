@@ -8,21 +8,29 @@ const Input = (props) => {
     const [name, setName] = React.useState(props.name);
     const [selectedValue, setSelectedValue] = React.useState("In");
     const handleChangeSelectInput = (itemValue, name) => {
-        // setText(text);
-        // console.log(itemValue);
-        props.handleChangeInput({
-            value : itemValue,
-            name: name
-        });
-      } 
+  
+    }
     const handleChange = (text, name) => {
-        // console.log("Lo que recibo: " , name)
-        setText(text);
-        props.handleChangeInput({
-          value : text,
-          name: name
-        });
-      } 
+       
+        if (props.isSelectInput) {
+            setSelectedValue(text);
+            console.log(name)
+            // console.log(value)
+            props.handleChangeInput({
+                value: text,
+                name: name
+            });
+        }
+        else{
+            setText(text);
+            props.handleChangeInput({
+                value: text,
+                name: name
+            });
+        }
+
+
+    }
 
 
     return (
@@ -31,9 +39,9 @@ const Input = (props) => {
                 <Text style={{ fontSize: 20 }}>{props.label}</Text>
                 {props.isSelectInput ?
                     <Picker
-                        style={{ margin: 8, backgroundColor: 'green' }}
+                        style={{ margin: 8, backgroundColor: '' }}
                         selectedValue={selectedValue}
-                        onValueChange={(itemValue, itemIndex) => handleChangeSelectInput(itemValue,props.name)}
+                        onValueChange={(itemValue, itemIndex) => handleChange(itemValue, props.name)}
                     >
                         <Picker.Item label="In" value="In" />
                         <Picker.Item label="Out" value="Out" />
@@ -41,7 +49,7 @@ const Input = (props) => {
                     </Picker>
                     :
                     <TextInput
-                        style={{ margin: 8,  backgroundColor: 'yellow'}}
+                        style={{ margin: 8, backgroundColor: '' }}
                         label={props.placeholder}
                         value={text}
                         name={props.name}

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styles from '../styles';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
 // TAB VIEW
 import { TabView, SceneMap } from 'react-native-tab-view';
@@ -25,39 +26,6 @@ const UIScreen = ({ navigation }) => {
 }
 
 export default UIScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    height: 'auto',
-    flex: 1,
-    backgroundColor: '#fff',
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  tinyLogo: {
-    width: 200,
-    height: 200,
-  },
-  textCenter: {
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  drawer: {
-    backgroundColor: 'black'
-  },
-  titleDetailScreen: {
-    fontSize: 30,
-    textAlign: 'center',
-    margin: 10
-  },
-  scene: {
-    flex: 1,
-  },
-  buttons: {
-    margin: 10
-  }
-});
 
 
 

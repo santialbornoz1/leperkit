@@ -7,9 +7,9 @@ import TableLepper from '../../components/table.js';
 
 
 const LeftContent = props => <Avatar.Icon {...props}  style={{backgroundColor: "blue"}} icon="folder" />
-const RightContent = (props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />
+// const RightContent = (props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />
 
-const CardProbing = (props) => {
+const CardSimple = (props) => {
     const [expanded, setExpanded] = React.useState(true);
     const [viewMore, setViewMore] = React.useState("Ver mas..");
     const handlePress = () => {
@@ -23,13 +23,7 @@ const CardProbing = (props) => {
         <ScrollView>
             {/* <View> */}
             <Card style={styles.cardContainer}>
-                {props.isAvaiable ?
-                <>
-                    <Card.Title title={props.titleCard} subtitle="Estado: Libre" subtitleStyle={{ color: 'green', fontSize: 15 }} left={LeftContent} right={RightContent} />
-                    </>
-                    :
-                    <Card.Title title={props.titleCard} subtitle={"Estado: Usado en " + props.usedIn} subtitleStyle={{ color: 'red', fontSize: 15 }} left={LeftContent} rigth={RightContent} />
-                }
+                    <Card.Title title={props.titleCard} subtitle={"Type:" + props.type} subtitleStyle={{ color: 'black', fontSize: 15 }}left={LeftContent}  />
                 <View style={{ alignItems: 'center' }}>
                 </View>
                 <View style={{ alignItems: 'center' }}>
@@ -55,7 +49,7 @@ const CardProbing = (props) => {
     );
 };
 
-export default CardProbing;
+export default CardSimple;
 
 
 

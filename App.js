@@ -12,8 +12,8 @@ import DetalleScreen from './routes/Detail';
 import UIScreen from './routes/UI';
 import UIDetailScreen from './routes/UIDetail';
 import ModulesScreen from './routes/Modules';
-import DownloadPDFScreen from './routes/DownloadPDF';
 import CardProbingScreen from './routes/CardProbing';
+import AllUIScreen from './routes/AllUI';
 
 
 
@@ -35,50 +35,17 @@ const AppNavigator = createStackNavigator({
   },
   AddNewUI : {
     screen: AddNewUIScreen,
-  },
-  DownloadPDF: {
-    screen: DownloadPDFScreen,
-  },  
+  }, 
   CardProbing: {
     screen: CardProbingScreen,
-  }
-}, { initialRouteName: 'UIDetail' });
+  },
+  AllUI : {
+    screen: AllUIScreen,
+  },
+}, { initialRouteName: 'AllUI' });
 
 export default createAppContainer(AppNavigator);
 
-
-const styles = StyleSheet.create({
-  container: {
-    height: 'auto',
-    flex: 1,
-    backgroundColor: '#fff',
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  tinyLogo: {
-    width: 200,
-    height: 200,
-  },
-  textCenter: {
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  drawer: {
-    backgroundColor: 'black'
-  },
-  titleDetailScreen: {
-    fontSize: 30,
-    textAlign: 'center',
-    margin: 10
-  },
-  scene: {
-    flex: 1,
-  },
-  buttons: {
-    margin: 10
-  }
-});
 
 
 
