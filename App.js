@@ -42,7 +42,7 @@ const AppNavigator = createStackNavigator({
   AllUI : {
     screen: AllUIScreen,
   },
-}, { initialRouteName: 'AllUI' });
+}, { initialRouteName: 'Home' });
 
 export default createAppContainer(AppNavigator);
 
