@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from '../styles';
 import { useState, useEffect } from 'react';
 import { StyleSheet, ActivityIndicator, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
+import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
 import CardProbing from '../../frontend/components/Card/Card.js';
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { FAB, Chip, Title } from 'react-native-paper';
@@ -30,14 +31,15 @@ dataTeclado4x4 = {
 
 
 
-
+var urlFront = urlFrontEnd();
+var urlBack = urlBackEnd();
 const initialLayout = { width: Dimensions.get('window').width };
 
 const UIDetailScreen = ({ navigation }) => {
     const [dataUser, setDataUser] = useState([]);
     const [isLoading, setisLoading] = useState(true);
     useEffect(() => {
-        fetch("http://192.168.100.18:4000/test")
+        fetch(urlBack + "test")
             .then((response) => response.json())
             .then((responseData) => {
                 setDataUser(responseData);
@@ -61,11 +63,10 @@ const UIDetailScreen = ({ navigation }) => {
     }
     return (
         <View style={styles.container}>
-            <ScrollView>
-                <View style={styles.container}>
                     {isLoading ?
                         <Spinner />
                         :
+                        <ScrollView>
                         <View style={styles.container}>
                             <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }} >
 
@@ -87,9 +88,8 @@ const UIDetailScreen = ({ navigation }) => {
 
                             </ScrollView>
                         </View>
+                        </ScrollView>
                     }
-                </View>
-            </ScrollView>
             <FAB.Group
                 open={open}
                 icon={open ? 'minus' : 'plus'}

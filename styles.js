@@ -64,5 +64,15 @@ export default StyleSheet.create({
     chipNotSelected: {
         backgroundColor: "#ebebeb",
         
+    },
+    containerSpinner: {
+        flex: 1,
+        justifyContent: "center",
+        backgroundColor: '#fff'
+    },
+    horizontalSpinner: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 10
     }
 });

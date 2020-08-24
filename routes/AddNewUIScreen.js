@@ -1,10 +1,14 @@
 import * as React from 'react';
-import styles from '../styles'
+import styles from '../styles';
+import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label } from 'react-native';
 import { TextInput, Dialog, Portal, Menu } from 'react-native-paper';
 import Input from '../components/Input/Input.js';
 import SelectInput from '../components/Input/SelectInput.js';
+import Spinner from '../components/SpinnerLoading/SpinnerLoading';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
+import { useState, useEffect } from 'react';
 const AddNewUIScreen = ({ navigation }) => {
     const [text, setText] = React.useState('');
     const [selectedValue, setSelectedValue] = React.useState("In");
@@ -19,48 +23,28 @@ const AddNewUIScreen = ({ navigation }) => {
         "usedIn": "",
         "urlDetail": "http://africau.edu/images/default/sample.pdf"
     });
-    // "name": "",
-    // "model": "",
-    // "type": "",
-    // "assets": "",
-    // "pins": [],
-    // "description": "",
-    // "isAvaiable": false,
-    // "usedIn": "asdkjashdas",
-    // "urlDetail": "http://africau.edu/images/default/sample.pdf"
-
-    //     {
-    // "name": "Hardcodeado",
-    // "model": "prueba2",
-    // "type": "in",
-    // "assets": "ochoPulsadores",
-    // "pins": [
-    //     {
-    //         "_id": "5f2b017c58134828c44acc3c",
-    //         "pin": "U1",
-    //         "used": "X"
-    //     },
-    //     {
-    //         "_id": "5f2b017c58134828c44acc3d",
-    //         "pin": "U2",
-    //         "used": "X"
-    //     }
-    // ],
-    // "description": "AEEEEEEEEEEEEE",
-    // "isAvaiable": false,
-    // "usedIn": "asdkjashdas",
-    // "urlDetail": "http://africau.edu/images/default/sample.pdf"
-    // }
-
+    const [isLoading, setisLoading] = useState(false);
+    const [showAlert, setshowAlert] = useState(false);
+    const showAlertFunction = () => {
+        setshowAlert(true);
+      };
+    
+    const hideAlertFunction  = () => {
+        setshowAlert(false);
+        navigation.navigate('UI')
+      };
+    var urlFront = urlFrontEnd();
+    var urlBack = urlBackEnd();
+    
     const [inModules, setinModules] = React.useState([]);
-    const scrollEnabled = false;
     const handleChangeInput = (e) => {
         setData({
             ...data,
             [e.name]: e.value
         })
+
         if (e.name === "type") {
-            fetch("http://192.168.100.18:4000/searchModuleInfo/" + e.value)
+            fetch(urlBack + "searchModuleInfo/" + e.value)
                 .then((response) => response.json())
                 .then((response) => {
                     var mod = [];
@@ -70,13 +54,11 @@ const AddNewUIScreen = ({ navigation }) => {
                         setinModules(mod)
 
                     },
-                    // console.log("2",inModules)
                     )}
                 })
         }
         if (e.name === "model") {
-            // alert("SELECCIONASTE MODULO")
-            fetch("http://192.168.100.18:4000/searchModuleInfo/" + data.type + "/" + e.value)
+            fetch(urlBack + "searchModuleInfo/" + data.type + "/" + e.value)
             .then((response) => response.json())
             .then((response) => {
                 console.log("RESPONSE",response)
@@ -88,12 +70,17 @@ const AddNewUIScreen = ({ navigation }) => {
                 })
             })
         }
-        console.log(data)
     }
 
 
     const onClickAdd = (e) => {
-        fetch("http://192.168.100.18:4000/addUImoduleUser", {
+        
+        if(data.type === "" || data.model==="" || data.description==="" || data.state===""){
+            alert("Completa todos los campos!")
+        }
+        else{
+            setisLoading(true)
+        fetch(urlBack + "addUImoduleUser", {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -102,10 +89,10 @@ const AddNewUIScreen = ({ navigation }) => {
         })
             .then((response) => response.json())
             .then((responseData) => {
-                alert("Modulo agregado a base de datos");
-
-                navigation.navigate('UI')
+                setisLoading(false)
+                setshowAlert(true)
             })
+        }
     }
     const [typeModules, setTypeModules] = React.useState(["In", "Out", "In-out"]);
    
@@ -115,7 +102,7 @@ const AddNewUIScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <ScrollView>
+            {isLoading ? <Spinner /> :  <ScrollView>
                 <SelectInput name="type" type={"text"} placeholderDefault={"Selecciona el tipo de modulo"} label={"Tipo"} placeholder={"Tipo"} backgroundColor={"#fff"} handleChangeInput={handleChangeInput}
                     options={typeModules}
                 />
@@ -164,8 +151,26 @@ const AddNewUIScreen = ({ navigation }) => {
                 <View style={styles.buttons}>
                     <Button title="Agregar" onPress={onClickAdd} />
                 </View>
-            </ScrollView>
-
+            </ScrollView>}
+           
+            <AwesomeAlert
+          show={showAlert}
+          showProgress={false}
+        //   title="Exitoso"
+          message="Modulo agregado exitosamente"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showCancelButton={false}
+          showConfirmButton={true}
+          confirmText="Aceptar"
+          confirmButtonColor="green"
+          onCancelPressed={() => {
+            hideAlertFunction();
+          }}
+          onConfirmPressed={() => {
+            hideAlertFunction();
+          }}
+        />
         </View>
     )
 }

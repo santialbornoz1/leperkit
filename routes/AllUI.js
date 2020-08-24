@@ -3,6 +3,7 @@ import styles from '../styles'
 import { useState, useEffect } from 'react';
 import { StyleSheet, ActivityIndicator, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
 import CardProbing from '../../frontend/components/Card/CardSimple.js';
+import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { FAB, Chip, Title } from 'react-native-paper';
 // TAB VIEW
@@ -30,6 +31,8 @@ dataTeclado4x4 = {
 
 
 
+var urlFront = urlFrontEnd();
+var urlBack = urlBackEnd();
 
 const initialLayout = { width: Dimensions.get('window').width };
 
@@ -37,7 +40,7 @@ const AllUIScreen = ({ navigation }) => {
     const [dataUser, setDataUser] = useState([]);
     const [isLoading, setisLoading] = useState(true);
     useEffect(() => {
-        fetch("http://192.168.100.18:4000/allUIModules")
+        fetch(urlBack + "allUIModules")
             .then((response) => response.json())
             .then((responseData) => {
                 setDataUser(responseData);
