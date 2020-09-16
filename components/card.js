@@ -9,6 +9,7 @@ const Card = (props) => {
         props.onPress();
     }
     return (
+        <ScrollView>
         <TouchableHighlight style={styles.touchableCard} activeOpacity={1} underlayColor="#EDF0F2" onPress={onPressCard}>
             <View style={styles.containerCard}>
                 <View style={styles.imageContainerAndText}>
@@ -21,6 +22,7 @@ const Card = (props) => {
                 </View>
             </View>
         </TouchableHighlight>
+        </ScrollView>
     )
 }
 

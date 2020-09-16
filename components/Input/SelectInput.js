@@ -25,7 +25,7 @@ const SelectInput = (props) => {
                         selectedValue={selectedValue}
                         onValueChange={(itemValue, itemIndex) => handleChange(itemValue, props.name)}
                     >
-                        <Picker.Item label={props.placeholderDefault} value="" />
+                        <Picker.Item key="" label={props.placeholderDefault} value="" />
                          {options.map((item, index) =>
                                    <Picker.Item label={item} value={item} />
                         )}

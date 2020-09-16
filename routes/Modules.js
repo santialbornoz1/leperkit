@@ -1,6 +1,5 @@
-// import * as React from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label } from 'react-native';
 
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label } from 'react-native';
 
 // TAB VIEW
 import { TabView, SceneMap } from 'react-native-tab-view';
@@ -27,11 +26,6 @@ dataTeclado4x4 = {
 //PESTAÑAS UI
 const FirstRoute = ({ navigation }) => (
   <View style={[styles.scene, { backgroundColor: '#ffffff' }]}>
-    {/* <CardUI imagePath={'ochoPulsadores'} titleCard={"Pulsadores"} titleCard2={""}
-      text="Descripcion de los pulsadores."
-      data={dataPulsadores}
-      isAvaiable={true}
-    /> */}
     <View style={styles.buttons}>
       <Button title="Agregar un nuevo UI a 'Mis UI'"/>
     </View>
@@ -44,29 +38,11 @@ const FirstRoute = ({ navigation }) => (
 
 const SecondRoute = () => (
   <View style={[styles.scene, { backgroundColor: '#ffffff' }]}>
-    {/* <CardUI imagePath={'displayOLED'} titleCard={"Display OLED 128x64"} titleCard2={""}
-      text="Descripcion del display."
-      data={dataPulsadores}
-      isAvaiable={true}
-      usedIn={"'Lampara de pie'"}
-    />
-    <CardUI imagePath={'cuatroporsietesegm'} titleCard={"4 Display  7 seg Reloj"} titleCard2={""}
-      text="Descripcion del display."
-      data={dataPulsadores}
-      isAvaiable={false}
-      usedIn={"'Panel de control'"}
-    /> */}
   </View>
 );
 
 const ThirdRoute = () => (
   <View style={[styles.scene, { backgroundColor: '#ffffff' }]}>
-    {/* <CardUI imagePath={'teclado4x4yLeds'} titleCard={"Teclado 4x4 + Leds"} titleCard2={""}
-      text="Descripcion de teclado 4x4 + leds."
-      data={dataPulsadores}
-      isAvaiable={true}
-      usedIn={"'Lampara de pie'"}
-    /> */}
   </View>
 );
 

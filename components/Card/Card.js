@@ -21,14 +21,15 @@ const CardProbing = (props) => {
 
     return (
         <ScrollView>
-            {/* <View> */}
             <Card style={styles.cardContainer}>
                 {props.isAvaiable ?
-                <>
+                    <>
                     <Card.Title title={props.titleCard} subtitle="Estado: Libre" subtitleStyle={{ color: 'green', fontSize: 15 }} left={LeftContent} right={RightContent} />
                     </>
                     :
+                    <>
                     <Card.Title title={props.titleCard} subtitle={"Estado: Usado en " + props.usedIn} subtitleStyle={{ color: 'red', fontSize: 15 }} left={LeftContent} rigth={RightContent} />
+                    </>
                 }
                 <View style={{ alignItems: 'center' }}>
                 </View>
@@ -50,7 +51,6 @@ const CardProbing = (props) => {
                     </List.Accordion>
                 </List.Section>
             </Card>
-            {/* </View> */}
         </ScrollView>
     );
 };

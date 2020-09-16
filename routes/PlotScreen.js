@@ -37,7 +37,7 @@ var urlBack = urlBackEnd();
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-const AllUIScreen = ({ navigation }) => {
+const PlotScreen = ({ navigation }) => {
     const [dataUser, setDataUser] = useState([]);
     const [dataUserOriginalList, setDataUserOriginalList] = useState([]);
     const [isLoading, setisLoading] = useState(true);
@@ -176,5 +176,5 @@ const AllUIScreen = ({ navigation }) => {
     )
 }
 
-export default AllUIScreen;
+export default PlotScreen;
 

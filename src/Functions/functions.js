@@ -9,24 +9,13 @@ return dataordered
 }
 
 function urlFrontEnd(){
-if(process.env.NODE_ENV === "production"){
-    var REACT_APP_URL_FRONT="https://creativepoint.netlify.app/";
-  }
-  else{
-    var REACT_APP_URL_FRONT="http://localhost:3000/";
-  }
-  var REACT_APP_URL_FRONT="http://localhost:3000/";
+  var REACT_APP_URL_FRONT="http://192.168.100.18:3000/";
   return REACT_APP_URL_FRONT;
 }
 
 function urlBackEnd(){
-  // if(process.env.NODE_ENV === "production"){
-  //     var REACT_APP_URL_BACK="http://66.97.46.226:4003/";
-  //   }
-  //   else{
-  //     var REACT_APP_URL_BACK="http://192.168.100.18:4003/";
-  //   }
   // var REACT_APP_URL_BACK="http://66.97.46.226:4003/";
+  // var REACT_APP_URL_BACK="http://192.168.100.17:4003/";
   var REACT_APP_URL_BACK="http://192.168.100.18:4003/";
     return REACT_APP_URL_BACK;
   }

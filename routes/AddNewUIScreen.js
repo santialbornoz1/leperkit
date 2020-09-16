@@ -7,6 +7,7 @@ import Input from '../components/Input/Input.js';
 import SelectInput from '../components/Input/SelectInput.js';
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import Appbar from "../components/Appbar/Appbar"
 
 import { useState, useEffect } from 'react';
 const AddNewUIScreen = ({ navigation }) => {
@@ -42,7 +43,7 @@ const AddNewUIScreen = ({ navigation }) => {
             ...data,
             [e.name]: e.value
         })
-
+        // console.log(data)
         if (e.name === "type") {
             fetch(urlBack + "searchModuleInfo/" + e.value)
                 .then((response) => response.json())
@@ -52,7 +53,6 @@ const AddNewUIScreen = ({ navigation }) => {
                         {
                         mod.push(item.name),
                         setinModules(mod)
-
                     },
                     )}
                 })
@@ -61,7 +61,7 @@ const AddNewUIScreen = ({ navigation }) => {
             fetch(urlBack + "searchModuleInfo/" + data.type + "/" + e.value)
             .then((response) => response.json())
             .then((response) => {
-                console.log("RESPONSE",response)
+                // console.log("RESPONSE",response)
                 setData({
                     ...data,
                     assets: response.assets,
@@ -69,6 +69,16 @@ const AddNewUIScreen = ({ navigation }) => {
                     urlDetail: response.urlDetail
                 })
             })
+        }
+        if(e.name === "state"){
+            if(e.value === "Libre"){
+                // alert("2")
+                setData({...data, isAvaiable: true})
+            }
+            else{
+                // alert("3")
+                setData({...data, isAvaiable: false})
+            }
         }
     }
 
@@ -101,6 +111,8 @@ const AddNewUIScreen = ({ navigation }) => {
     const [statesModules, setStatesModules] = React.useState(["Libre", "Ocupado"]);
 
     return (
+        <>
+        {/* <Appbar/> */}
         <View style={styles.container}>
             {isLoading ? <Spinner /> :  <ScrollView>
                 <SelectInput name="type" type={"text"} placeholderDefault={"Selecciona el tipo de modulo"} label={"Tipo"} placeholder={"Tipo"} backgroundColor={"#fff"} handleChangeInput={handleChangeInput}
@@ -113,7 +125,7 @@ const AddNewUIScreen = ({ navigation }) => {
                 <SelectInput name="state" type={"text"} placeholderDefault={"Selecciona un estado"} label={"Estado"} placeholder={"Estado"} backgroundColor={"#fff"} handleChangeInput={handleChangeInput}
                     options={statesModules}
                 />
-                {data.state === "Ocupado" ?
+                {!data.isAvaiable ?
                     <Input isSelectInput={false} name="usedIn" type={"text"} label={"Usado en "} placeholder={"Usado en.."} backgroundColor={"#fff"} handleChangeInput={handleChangeInput} />
                     :
                     <></>
@@ -172,6 +184,7 @@ const AddNewUIScreen = ({ navigation }) => {
           }}
         />
         </View>
+        </>
     )
 }
 

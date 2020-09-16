@@ -6,6 +6,9 @@ import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
 import CardProbing from '../../frontend/components/Card/Card.js';
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { FAB, Chip, Title } from 'react-native-paper';
+import axios from "axios";
+// import RefreshControl from "../components/RefreshControl/RefreshControl"
+// import Appbar from "../components/Appbar/Appbar"
 // TAB VIEW
 import { TabView, SceneMap } from 'react-native-tab-view';
 dataPulsadores = {
@@ -29,8 +32,6 @@ dataTeclado4x4 = {
     ]
 }
 
-
-
 var urlFront = urlFrontEnd();
 var urlBack = urlBackEnd();
 const initialLayout = { width: Dimensions.get('window').width };
@@ -43,10 +44,10 @@ const UIDetailScreen = ({ navigation }) => {
             .then((response) => response.json())
             .then((responseData) => {
                 setDataUser(responseData);
-                console.log("DATA: ", responseData);
-                setisLoading(false)
-            })
-
+                setisLoading(false);
+            }).catch(function (error) {
+                console.log(error);
+              });
     }, []);
     // FAB
     const [state, setState] = React.useState({ open: false });
@@ -57,74 +58,54 @@ const UIDetailScreen = ({ navigation }) => {
     const [stateIn, setStateIn] = React.useState(false);
     const [stateOut, setStateOut] = React.useState(false);
     const [stateInOut, setStateInOut] = React.useState(false);
+
     const chipSelect = (e) => {
         setStateIn(!stateIn)
-        console.log(e.target)
     }
     return (
-        <View style={styles.container}>
-                    {isLoading ?
-                        <Spinner />
-                        :
-                        <ScrollView>
+        <>
+            {/* <Appbar/> */}
+            <View style={styles.container}>
+                {isLoading ?
+                    <Spinner />
+                    :
+                    <ScrollView>
                         <View style={styles.container}>
                             <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }} >
-
-                                {/* <TabView
-                            navigationState={{ index, routes }}
-                            renderScene={renderScene}
-                            onIndexChange={setIndex}
-                            initialLayout={initialLayout}
-                        /> */}
                                 <View>
                                     {dataUser.map((item, index) =>
-                                        <View>
+                                        <View key={index}>
                                             <CardProbing assets={item.assets} titleCard={item.name} text={item.description}
                                                 data={dataPulsadores} isAvaiable={item.isAvaiable} usedIn={item.usedIn} urlDetail={item.urlDetail} />
                                         </View>
                                     )}
-
                                 </View>
-
                             </ScrollView>
                         </View>
-                        </ScrollView>
-                    }
-            <FAB.Group
-                open={open}
-                icon={open ? 'minus' : 'plus'}
-                fabStyle={{ backgroundColor: "blue" }}
-                style={{ underlayColor: 'red' }}
-                actions={[
-                    {
-                        icon: 'plus',
-                        label: 'Agregar UI',
-                        onPress: () => navigation.navigate('AddNewUI')
-                    },
-                    {
-                        icon: 'star',
-                        label: 'Ver todos los UI',
-                        onPress: () => navigation.navigate('AllUI'),
-                    },
-                    {
-                        icon: 'email',
-                        label: 'Email',
-                        onPress: () => console.log('Pressed email'),
-                    },
-                    {
-                        icon: 'bell',
-                        label: 'Remind',
-                        onPress: () => console.log('Pressed notifications'),
-                    },
-                ]}
-                onStateChange={onStateChange}
-                onPress={() => {
-                    if (open) {
-                        // do something if the speed dial is open
-                    }
-                }}
-            />
-        </View>
+                    </ScrollView>
+                }
+                <FAB.Group open={open} icon={open ? 'minus' : 'plus'} fabStyle={{ backgroundColor: "blue" }} style={{ underlayColor: 'red' }}
+                    actions={[
+                        {
+                            icon: 'plus',
+                            label: 'Agregar UI',
+                            onPress: () => navigation.navigate('AddNewUI')
+                        },
+                        {
+                            icon: 'star',
+                            label: 'Ver todos los UI',
+                            onPress: () => navigation.navigate('AllUI'),
+                        }
+                    ]}
+                    onStateChange={onStateChange}
+                    onPress={() => {
+                        if (open) {
+
+                        }
+                    }}
+                />
+            </View>
+        </>
     )
 }
 

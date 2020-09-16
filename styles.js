@@ -5,7 +5,7 @@ export default StyleSheet.create({
     container: {
         height: 'auto',
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#fafafa',
         alignSelf: 'stretch',
         justifyContent: 'center'
     },
@@ -30,7 +30,9 @@ export default StyleSheet.create({
         flex: 1,
     },
     buttons: {
-        margin: 10
+        margin: 10,
+        marginRight: 50,
+        marginLeft: 50
     },
     containerSpinner: {
         flex: 1,
@@ -51,6 +53,9 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
         paddingHorizontal: 12,
 
+    },
+    blueColor: {
+        backgroundColor: "#2096F3",
     },
     chip: {
         backgroundColor: "#2096F3",
@@ -74,5 +79,58 @@ export default StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         padding: 10
-    }
+    },
+    ///BUTTON
+    containerView: {
+        flex: 1,
+      },
+      loginScreenContainer: {
+        flex: 1,
+        backgroundColor: "#fafafa"
+      },
+      logoText: {
+        fontSize: 40,
+        fontWeight: "800",
+        marginTop: 150,
+        marginBottom: 30,
+        textAlign: 'center',
+      },
+      loginFormView: {
+        flex: 1
+      },
+      loginFormTextInput: {
+        height: 43,
+        fontSize: 14,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#eaeaea',
+        backgroundColor: '#fff',
+        paddingLeft: 10,
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 5,
+        marginBottom: 5,
+      
+      },
+      loginButton: {
+        backgroundColor: '#3897f1',
+        borderRadius: 5,
+        height: 45,
+        marginTop: 10,
+      },
+      fbLoginButton: {
+        height: 45,
+        marginTop: 10,
+        backgroundColor: 'transparent',
+      },
+    ///Refresh Control
+    containerRefreshControl: {
+        flex: 1,
+      },
+      scrollViewRefreshControl: {
+        flex: 1,
+        backgroundColor: 'pink',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
 });
