@@ -9,15 +9,15 @@ return dataordered
 }
 
 function urlFrontEnd(){
-  var REACT_APP_URL_FRONT="http://192.168.100.18:3000/";
+  var REACT_APP_URL_FRONT="http://192.168.100.17:3000/";
   return REACT_APP_URL_FRONT;
 }
 
 function urlBackEnd(){
   // var REACT_APP_URL_BACK="http://66.97.46.226:4003/";
   // var REACT_APP_URL_BACK="http://192.168.100.17:4003/";
-  var REACT_APP_URL_BACK="http://192.168.100.18:4003/";
-    return REACT_APP_URL_BACK;
+  var REACT_APP_URL_BACK="http://192.168.100.17:4003/";
+  return REACT_APP_URL_BACK;
   }
 
 

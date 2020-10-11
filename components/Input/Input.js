@@ -28,15 +28,13 @@ const Input = (props) => {
                 name: name
             });
         }
-
-
     }
 
 
     return (
         <>
             <View style={{ backgroundColor: props.backgroundColor, margin: 10 }}>
-                <Text style={{ fontSize: 20 }}>{props.label}</Text>
+                <Text style={{ fontSize: 14, color: "grey" }}>{props.label}</Text>
                 {props.isSelectInput ?
                     <Picker
                         style={{ margin: 8, backgroundColor: '' }}
@@ -49,10 +47,12 @@ const Input = (props) => {
                     </Picker>
                     :
                     <TextInput
-                        style={{ margin: 8, backgroundColor: '' }}
+                        style={{ margin: 8, backgroundColor: '', fontSize: 14 , color: "black"}}
                         label={props.placeholder}
                         value={text}
                         name={props.name}
+                        maxLength={props.maxLength}
+                        keyboardType={props.keyboardType}
                         onChangeText={(text) => handleChange(text, props.name)}
                     />
                 }

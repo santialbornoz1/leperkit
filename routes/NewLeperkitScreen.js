@@ -1,29 +1,28 @@
 import * as React from 'react';
 import styles from '../styles';
 import { Text, View, Button, ScrollView } from 'react-native';
-// import Appbar from "../components/Appbar/Appbar";
 
-function HomeScreen({ navigation }) {
+function NewLeperkit({ navigation }) {
   return (
     <>
       {/* <Appbar title="Home screen" subtitle="Subtitulo!"/> */}
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }}>
-          <Text style={styles.titleDetailScreen}>¿Que deseas realizar?</Text>
+          <Text style={styles.titleDetailScreen}>Armar un nuevo leperkit</Text>
           <View style={styles.buttons}>
-            <Button title="Ver información de un Leperkit" onPress={() => navigation.push('ListLbbs')} />
+            <Button title="Elegir LBB" onPress={() => navigation.push('LbbSelected')} />
           </View>
           <View style={styles.buttons}>
-            <Button success title="Armar un nuevo leperkit" onPress={() => navigation.push('NewLeperkit')} />
+            <Button success title="Elegir modulos" onPress={() => navigation.push('ModulesInstalled')} />
           </View>
           <View style={styles.buttons}>
-            <Button title="Simular armado" />
+            <Button title="Elegir interfaz de usuario" />
           </View>
           <View style={styles.buttons}>
             <Button title="Ver mi catalogo" />
           </View>
           <View style={styles.buttons}>
-            <Button title="Ver catalogo completo" />
+            <Button title="Agregar componentes o circuitos externos" onPress={() => navigation.push('AddComponentOrExternalCircuit')}/>
           </View>
         </ScrollView>
       </View>
@@ -32,9 +31,4 @@ function HomeScreen({ navigation }) {
 }
 
 
-export default HomeScreen;
-
-
-
-
-
+export default NewLeperkit;

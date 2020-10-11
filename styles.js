@@ -13,6 +13,10 @@ export default StyleSheet.create({
         width: 200,
         height: 200,
     },
+    // tinyLogo: {
+    //     width: 150,
+    //     height: 150,
+    // },
     textCenter: {
         textAlign: 'center',
         alignItems: 'center',
@@ -22,7 +26,7 @@ export default StyleSheet.create({
         backgroundColor: 'black'
     },
     titleDetailScreen: {
-        fontSize: 30,
+        fontSize: 21,
         textAlign: 'center',
         margin: 10
     },
@@ -133,4 +137,11 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
       },
+      cardContainer: {
+        margin: 20,
+        borderRadius: 10,
+        backgroundColor: '#f7f7f7',
+        borderColor: '#D2DBE0',
+        borderWidth: 2,
+    }
 });

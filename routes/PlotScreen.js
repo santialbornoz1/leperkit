@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Navigation } from 'react-native-navigation';
 import styles from '../styles'
 import { useState, useEffect } from 'react';
 import { StyleSheet, ActivityIndicator, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
@@ -6,175 +7,75 @@ import CardProbing from '../../frontend/components/Card/CardSimple.js';
 import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { FAB, Chip, Title } from 'react-native-paper';
-import Appbar from "../components/Appbar/Appbar"
-// TAB VIEW
-import { TabView, SceneMap } from 'react-native-tab-view';
-dataPulsadores = {
-    tableHead: ['Usa los pines'],
-    tableData: [
-        ['U1', 'X'],
-        ['U2', 'X'],
-        ['U3', 'X'],
-        ['U4', 'X'],
-        ['U5', 'X'],
-    ]
-}
-
-dataTeclado4x4 = {
-    tableHead: ['Usa los pines'],
-    tableData: [
-        ['U1', ''],
-        ['U2', 'X'],
-        ['U3', 'X'],
-        ['U4', '']
-    ]
-}
+import Appbar from "../components/Appbar/Appbar";
+import { Checkbox, RadioButton } from 'react-native-paper';
 
 
+function PlotScreen({ navigation }) {
+    const [isLoading, setisLoading] = useState(false);
+    const [value, setValue] = React.useState('first');
+    const [disableButton, setDisableButton] = useState(false);
+    const [models, setModels] = useState(["G1", "G2", "G3", "G4", "R1", "R2", "R3", "Y1", "Y2", "Y3", "Y4", "B1", "B2", "B3", "B4", "B5", "I2C"]);
+    const [options, setOptions] = useState();
+    const optionused = [];
 
-var urlFront = urlFrontEnd();
-var urlBack = urlBackEnd();
-
-const initialLayout = { width: Dimensions.get('window').width };
-
-const PlotScreen = ({ navigation }) => {
-    const [dataUser, setDataUser] = useState([]);
-    const [dataUserOriginalList, setDataUserOriginalList] = useState([]);
-    const [isLoading, setisLoading] = useState(true);
     useEffect(() => {
-        fetch(urlBack + "allUIModules")
-            .then((response) => response.json())
-            .then((responseData) => {
-                setDataUser(responseData);
-                setDataUserOriginalList(responseData);
-                setisLoading(false)
-            })
-
+        const received = navigation.getParam("models2");
+        for (const option in received) {
+            if(received[option] === true){
+                optionused.push(models[option]);
+            }
+        }
+        setOptions(optionused);
     }, []);
 
-    // FAB
-    const [state, setState] = React.useState({ open: false });
-    const onStateChange = ({ open }) => setState({ open });
-    // FAB
-    const [stateIn, setStateIn] = React.useState(false);
-    const [stateOut, setStateOut] = React.useState(false);
-    const [stateInOut, setStateInOut] = React.useState(false);
-    const [stateSmall, setStateSmall] = React.useState(false);
-    const [stateMedium, setStateMedium] = React.useState(false);
-    const [stateLarge, setStateLarge] = React.useState(false);
-
-    const chipSelect = (e) => {
-        switch (e) {
-            case 1:
-                setStateIn(!stateIn)
-                break;
-            case 2:
-                setStateOut(!stateOut)
-                break;
-            case 3:
-                setStateInOut(!stateInOut)
-                break;
-            case 4:
-                setStateSmall(!stateSmall)
-                break;
-            case 5:
-                setStateMedium(!stateMedium)
-                break;
-            default:
-                setStateLarge(!stateLarge)
-                break;
-        }
+    const selectingOption = () => {
+        alert("E")
     }
 
-    const applyChanges = () => {
-        setisLoading(false)
-        if (stateIn && !stateOut && !stateInOut) {
-            var asd = dataUser.filter(obj => obj.type == "In" )
-            setDataUserOriginalList(asd);
-        }
-        else if (!stateIn && stateOut && !stateInOut) {
-            var asd = dataUser.filter(obj => obj.type == "Out" )
-            setDataUserOriginalList(asd);
-        }
-        else if (!stateIn && !stateOut && stateInOut) {
-            var asd = dataUser.filter(obj => obj.type == "In-out" )
-            setDataUserOriginalList(asd);
-        }
-        else if (stateIn && stateOut && !stateInOut) {              
-        var asd = dataUser.filter(obj => obj.type == "In" || obj.type == "Out")
-        setDataUserOriginalList(asd);
-        }
-        else if (stateIn && !stateOut && stateInOut) {              
-            var asd = dataUser.filter(obj => obj.type == "In" || obj.type == "In-out")
-            setDataUserOriginalList(asd);
-        }
-        else if (!stateIn && stateOut && stateInOut) {              
-            var asd = dataUser.filter(obj => obj.type == "Out" || obj.type == "In-out")
-            setDataUserOriginalList(asd);
-        }
-        else if (stateIn && stateOut && stateInOut) {
-            var asd = dataUser;
-            setDataUserOriginalList(asd);
-        }
-        else{}
-
+    const onContinue = () => {
+        navigation.push('Assignpin', {options});
     }
-
-
     return (
         <>
-        {/* <Appbar/> */}
-        <View style={styles.container}>
-            {isLoading ?
-                <Spinner/>
-                :
-                <ScrollView>
-                    <View style={styles.container}>
-                        <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }} >
-                            <View style={styles.containerChip} >
-                                <Title>Filtros</Title>
-                                <View style={styles.rowChip}>
-                                    <Chip style={styles.chip} name="in" selected={stateIn} onPress={() => chipSelect(1)} style={stateIn ? styles.chipSelected : styles.chipNotSelected}>
-                                        <Text style={styles.chipText}>In</Text>
-                                    </Chip>
-                                    <Chip style={styles.chip} name="out" selected={stateOut} onPress={() => chipSelect(2)} style={stateOut ? styles.chipSelected : styles.chipNotSelected}>
-                                        <Text style={styles.chipText}>Out</Text>
-                                    </Chip>
-                                    <Chip style={styles.chip} name="inOut" selected={stateInOut} onPress={() => chipSelect(3)} style={stateInOut ? styles.chipSelected : styles.chipNotSelected}>
-                                        <Text style={styles.chipText}>In-Out</Text>
-                                    </Chip>
+            {/* <Appbar/> */}
+            <View style={styles.container}>
+                {isLoading ?
+                    <Spinner />
+                    :
+                    <ScrollView>
+                        <View style={styles.container}>
+                            <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }} >
+                                <View>
+                                    <Text style={styles.titleDetailScreen}>Selecciona el Lepercom a configurar</Text>
                                 </View>
-                                <View style={styles.rowChip}>
-                                    <Chip style={styles.chip} name="small" selected={stateSmall} onPress={() => chipSelect(4)} style={stateSmall ? styles.chipSelected : styles.chipNotSelected}>
-                                        <Text style={styles.chipText} >Small</Text>
-                                    </Chip>
-                                    <Chip style={styles.chip} name="medium" selected={stateMedium} onPress={() => chipSelect(5)} style={stateMedium ? styles.chipSelected : styles.chipNotSelected}>
-                                        <Text style={styles.chipText} >Medium</Text>
-                                    </Chip>
-                                    <Chip style={styles.chip} name="large" selected={stateLarge} onPress={() => chipSelect(6)} style={stateLarge ? styles.chipSelected : styles.chipNotSelected}>
-                                        <Text style={styles.chipText} >Large</Text>
-                                    </Chip>
-                                </View>
-                            </View>
-                            <View style={styles.buttons}>
-                                <Button success title="Aplicar cambios" onPress={() => applyChanges()} />
-                            </View>
-                            <View>
-                                {dataUserOriginalList.map((item, index) =>
-                                    <View key={index}>
-                                        <CardProbing key={item._id} assets={item.assets} type={item.type} titleCard={item.name} text={item.description}
-                                            data={dataPulsadores} isAvaiable={item.isAvaiable} usedIn={item.usedIn} urlDetail={item.urlDetail} />
+                                <View>
+                                    <ScrollView>
+                                        <View style={{ backgroundColor: "#fff", marginHorizontal: 16, marginVertical: 5, borderRadius: 16, borderWidth: 3, borderColor: "grey" }}>
+                                            <Checkbox.Item color="#2096F3" label={"Casa (LBB3)"} status="checked" onPress={() => selectingOption()} />
+                                        </View>
+                                    </ScrollView>
+                                    <ScrollView>
+                                        <View style={{ backgroundColor: "#fff", marginHorizontal: 16, marginVertical: 5, borderRadius: 16, borderWidth: 3, borderColor: "grey" }}>
+                                            <Checkbox.Item color="#2096F3" label={"Cocina  (LBB3)"} status="!checked" onPress={() => selectingOption()} />
+                                        </View>
+                                    </ScrollView>
+                                    <ScrollView>
+                                        <View style={{ backgroundColor: "#fff", marginHorizontal: 16, marginVertical: 5, borderRadius: 16, borderWidth: 3, borderColor: "grey" }}>
+                                            <Checkbox.Item color="#2096F3" label={"Comedor  (LBB3)"} status="!checked" onPress={() => selectingOption()} />
+                                        </View>
+                                    </ScrollView>
+                                    <View style={styles.buttons} >
+                                        <Button title="Siguiente" onPress={() => onContinue()} disabled={disableButton} />
                                     </View>
-                                )}
-                            </View>
-                        </ScrollView>
-                    </View>
-                </ScrollView>
-            }
-        </View>
+                                </View>
+                            </ScrollView>
+                        </View>
+                    </ScrollView>
+                }
+            </View>
         </>
     )
 }
 
 export default PlotScreen;
-

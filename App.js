@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import AddNewUIScreen from './routes/AddNewUIScreen';
@@ -16,80 +15,105 @@ import UIDetailScreen from './routes/UIDetail';
 import ModulesScreen from './routes/Modules';
 import CardProbingScreen from './routes/CardProbing';
 import AllUIScreen from './routes/AllUI';
-// import PlotScreen from './routes/PlotScreen';
-// import { navigationRef } from './navigation/RootNavigation';
+import PlotScreen from './routes/PlotScreen';
+import ConfigurePlotScreen from './routes/ConfigurePlotScreen';
+import AssignpinScreen from './routes/AssignPinScreen';
+import ReadResourceScreen from './routes/ReadResourceScreen';
+import SetResourceScreen from './routes/SetResourceScreen';
+import DeleteResourceScreen from './routes/DeleteResourceScreen';
+import NewLeperkitScreen from './routes/NewLeperkitScreen';
+import ModulesInstalledScreen from './routes/ModulesInstalledScreen';
+import MyUIScreen from './routes/MyUIScreen';
+import AssignPinScreen from './routes/AssignPinScreen';
+import AddComponentOrExternalCircuitScreen from './routes/AddComponentOrExternalCircuitScreen';
+import AdvancedViewScreen from './routes/AdvancedView';
+import SimpleViewScreen from './routes/SimpleView';
+import Prueba2Screen from './routes/Prueba2';
+import ListLbbsScreen from './routes/ListLbbs';
+import ViewLbbDetailScreen from './routes/ViewLbbDetail';
+import LbbSelectedScreen from './routes/LbbSelected';
+
 
 const AppNavigator = createStackNavigator({
   Login: {
     screen: LoginScreen,
-    // navigationOptions:{
-    //   headerShown: false
-    // }
      navigationOptions: {
       header: null,
     },
   },
   Home: {
     screen: HomeScreen,
-    // navigationOptions: {
-    //   header: null,
-    // },
   },
-  // Drawer: {
-  //   screen: DrawerScreen,
-  //   // navigationOptions: {
-  //   //   header: null,
-  //   // },
-  // },
+  ListLbbs : {
+    screen: ListLbbsScreen,
+  },
+  ViewLbbDetail : {
+    screen: ViewLbbDetailScreen,
+  },
+  NewLeperkit: {
+    screen: NewLeperkitScreen,
+  },
+  LbbSelected: {
+    screen: LbbSelectedScreen,
+  },
+  MyUI: {
+    screen: MyUIScreen,
+  },
+  ModulesInstalled: {
+    screen: ModulesInstalledScreen,
+  },
   Detalle: {
     screen: DetalleScreen,
-    // navigationOptions: {
-    //   header: null,
-    // },
   },
   OptionUI: {
     screen: UIScreen,
-    // navigationOptions: {
-    //   header: null,
-    // },
   },
   OptionModules: {
-    screen: () => <OptionModuleScreen/>,               //FALTA
-    // navigationOptions: {
-    //   header: null,
-    // },
+    screen: OptionModuleScreen,               
   },
   OptionExternalCircuits: {
-    screen: OptionExternalCircuitsScreen,               //FALTA
-    // navigationOptions: {
-    //   header: null,
-    // },
+    screen: OptionExternalCircuitsScreen,               
   },
   UIDetail: {
     screen: UIDetailScreen,
-    // navigationOptions: {
-    //   header: null,
-    // },
   },
   AddNewUI : {
     screen: AddNewUIScreen,
-    // navigationOptions: {
-    //   header: null,
-    // },
   }, 
   AllUI : {
     screen: AllUIScreen,
-    // navigationOptions: {
-    //   header: null,
-    // },
   },
-  // Plot : {
-  //   screen: PlotScreen,
-  //   // navigationOptions: {
-  //   //   header: null,
-  //   // },
-  // },
-}, { initialRouteName: 'Login' });
+  Plot : {
+    screen: PlotScreen,
+  },
+  ConfigurePlot : {
+    screen: ConfigurePlotScreen,
+  },
+  Assignpin : {
+    screen: AssignpinScreen,
+  },
+  ReadResource : {
+    screen: ReadResourceScreen,
+  },
+  SetResource : {
+    screen: SetResourceScreen,
+  },
+  DeleteResource : {
+    screen: DeleteResourceScreen,
+  },
+  AddComponentOrExternalCircuit : {
+    screen: AddComponentOrExternalCircuitScreen,
+  },
+  AdvancedView : {
+    screen: AdvancedViewScreen,
+  },
+  SimpleView : {
+    screen: SimpleViewScreen,
+  },
+  Prueba2 : {
+    screen: Prueba2Screen,
+  },
+}, { initialRouteName: 'Home' });
 
 export default createAppContainer(AppNavigator);
 

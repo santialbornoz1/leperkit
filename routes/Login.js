@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Keyboard, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView } from 'react-native';
+import { Text, View, Button, Keyboard, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView } from 'react-native';
 import styles from "../styles";
 import { SocialIcon  } from 'react-native-elements';
 
-
-const LoginScreen = ({ navigation }) => {
+function LoginScreen({ navigation }) {
     return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

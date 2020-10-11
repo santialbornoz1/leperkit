@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styles from '../../styles'
 import { Avatar, Card, Title, Paragraph, List , IconButton } from 'react-native-paper';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
 import { mdiDotsVertical } from '@mdi/js';
@@ -32,7 +33,7 @@ const CardSimple = (props) => {
                 <List.Section>
                     <List.Accordion
                         title={viewMore}
-                        style={{ paddingBottom: 0 }}
+                        style={{ paddingBottom: 0}}
                         left={props => { }} onPress={handlePress}>
                         <List.Item left={props => { }} description={props.text} style={{ position: 'relative', bottom: 10, paddingTop: 0, marginTop: 0 }} />
                         <View style={{ paddingLeft: 0, marginHorizontal: 50 }}>
@@ -53,24 +54,4 @@ export default CardSimple;
 
 
 
-
-const styles = StyleSheet.create({
-    cardContainer: {
-        // backgroundColor: 'red',
-        margin: 20,
-        borderRadius: 10,
-        backgroundColor: '#f7f7f7',
-        // boxShadow: 20 20 60 '#d2d2d2', - 20 - 20 60 '#ffffff',
-        borderColor: '#D2DBE0',
-        borderWidth: 2,
-    },
-    tinyLogo: {
-        width: 150,
-        height: 150,
-    },
-    buttons: {
-        margin: 10,
-        marginHorizontal: 30
-    }
-});
 

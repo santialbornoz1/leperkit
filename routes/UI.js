@@ -1,11 +1,9 @@
 import * as React from 'react';
 import styles from '../styles';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
-// TAB VIEW
-import { TabView, SceneMap } from 'react-native-tab-view';
-import Appbar from "../components/Appbar/Appbar"
+import { Text, View, Button, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
+// import Appbar from "../components/Appbar/Appbar";
 
-const UIScreen = ({ navigation }) => {
+function UIScreen({ navigation }) {
   const scrollEnabled = false;
   return (
     <>

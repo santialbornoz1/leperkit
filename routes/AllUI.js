@@ -1,14 +1,14 @@
 import * as React from 'react';
 import styles from '../styles'
 import { useState, useEffect } from 'react';
-import { StyleSheet, ActivityIndicator, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
+import { Text, View, Button, ScrollView, Dimensions } from 'react-native';
 import CardProbing from '../../frontend/components/Card/CardSimple.js';
-import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
+import { urlBackEnd } from "../src/Functions/functions";
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
-import { FAB, Chip, Title } from 'react-native-paper';
+import { Chip, Title } from 'react-native-paper';
 import Appbar from "../components/Appbar/Appbar"
 // TAB VIEW
-import { TabView, SceneMap } from 'react-native-tab-view';
+
 dataPulsadores = {
     tableHead: ['Usa los pines'],
     tableData: [
@@ -31,8 +31,6 @@ dataTeclado4x4 = {
 }
 
 
-
-var urlFront = urlFrontEnd();
 var urlBack = urlBackEnd();
 
 const initialLayout = { width: Dimensions.get('window').width };
@@ -116,7 +114,10 @@ const AllUIScreen = ({ navigation }) => {
             var asd = dataUser;
             setDataUserOriginalList(asd);
         }
-        else{}
+        else{
+            var asd = dataUser;
+            setDataUserOriginalList(asd);
+        }
 
     }
 
@@ -162,7 +163,7 @@ const AllUIScreen = ({ navigation }) => {
                             <View>
                                 {dataUserOriginalList.map((item, index) =>
                                     <View key={index}>
-                                        <CardProbing key={item._id} assets={item.assets} type={item.type} titleCard={item.name} text={item.description}
+                                        <CardProbing  key={index} assets={item.assets} type={item.type} titleCard={item.name} text={item.description}
                                             data={dataPulsadores} isAvaiable={item.isAvaiable} usedIn={item.usedIn} urlDetail={item.urlDetail} />
                                     </View>
                                 )}
@@ -177,4 +178,3 @@ const AllUIScreen = ({ navigation }) => {
 }
 
 export default AllUIScreen;
-

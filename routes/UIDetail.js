@@ -1,16 +1,14 @@
 import * as React from 'react';
 import styles from '../styles';
 import { useState, useEffect } from 'react';
-import { StyleSheet, ActivityIndicator, Text, View, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, Dimensions, TouchableHighlight, Picker, Label, Linking } from 'react-native';
-import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
+import { View, ScrollView, Dimensions} from 'react-native';
+import { urlBackEnd } from "../src/Functions/functions";
 import CardProbing from '../../frontend/components/Card/Card.js';
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { FAB, Chip, Title } from 'react-native-paper';
 import axios from "axios";
-// import RefreshControl from "../components/RefreshControl/RefreshControl"
-// import Appbar from "../components/Appbar/Appbar"
-// TAB VIEW
 import { TabView, SceneMap } from 'react-native-tab-view';
+
 dataPulsadores = {
     tableHead: ['Usa los pines'],
     tableData: [
@@ -32,11 +30,10 @@ dataTeclado4x4 = {
     ]
 }
 
-var urlFront = urlFrontEnd();
 var urlBack = urlBackEnd();
 const initialLayout = { width: Dimensions.get('window').width };
 
-const UIDetailScreen = ({ navigation }) => {
+function UIDetailScreen({ navigation }) {
     const [dataUser, setDataUser] = useState([]);
     const [isLoading, setisLoading] = useState(true);
     useEffect(() => {
@@ -47,7 +44,7 @@ const UIDetailScreen = ({ navigation }) => {
                 setisLoading(false);
             }).catch(function (error) {
                 console.log(error);
-              });
+            });
     }, []);
     // FAB
     const [state, setState] = React.useState({ open: false });
