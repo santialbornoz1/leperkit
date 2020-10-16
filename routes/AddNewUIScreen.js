@@ -6,7 +6,7 @@ import Input from '../components/Input/Input.js';
 import SelectInput from '../components/Input/SelectInput.js';
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import AwesomeAlert from 'react-native-awesome-alerts';
-// import Appbar from "../components/Appbar/Appbar";
+import Appbar from "../components/Appbar/Appbar";
 import { useState } from 'react';
 
 
@@ -113,7 +113,7 @@ function AddNewUIScreen({ navigation }) {
 
     return (
         <>
-            {/* <Appbar/> */}
+            <Appbar title="Add new UI" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ? <Spinner /> : <ScrollView>
                     <SelectInput name="type" type={"text"} placeholderDefault={"Selecciona el tipo de modulo"} label={"Tipo"} placeholder={"Tipo"} backgroundColor={"#fff"} handleChangeInput={handleChangeInput}

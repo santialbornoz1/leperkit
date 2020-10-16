@@ -18,7 +18,7 @@ function DetalleScreen({ navigation }) {
   }
   return (
     <>
-      {/* <Appbar/> */}
+    <Appbar title="¿De parte se compone?" navigation={navigation} hasBack={true} />
       <View style={styles.container}>
         <ScrollView >
           <Text style={styles.titleDetailScreen}>¿De parte se compone?</Text>

@@ -124,7 +124,7 @@ const AllUIScreen = ({ navigation }) => {
 
     return (
         <>
-        {/* <Appbar/> */}
+        <Appbar title="All UI " navigation={navigation} hasBack={true} />
         <View style={styles.container}>
             {isLoading ?
                 <Spinner/>

@@ -19,12 +19,14 @@ function SimpleView({ navigation }) {
   const [selectedValue, setSelectedValue] = useState("");
   const [valueInput, onChangeTextInput] = React.useState('Boton ON');
   const [valueOutput, onChangeTextOutput] = React.useState('Brillo de la pantalla');
+  var item = navigation.getParam("item");
 
   return (
     <>
+      <Appbar title="Simple view" navigation={navigation} hasBack={true} />
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }}>
-          <Title>Display OLED 128x64</Title>
+          <Title>{item.name}</Title>
           <Subheading>Estas por agregar estas entradas:</Subheading>
           <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
             <View style={{ width: "50%", height: 50, backgroundColor: 'steelblue', justifyContent: 'center', alignItems: 'center' }}>
@@ -33,10 +35,8 @@ function SimpleView({ navigation }) {
             <View style={{ width: "10%", height: 50, justifyContent: 'center', alignItems: 'center' }}>
               <Text style={{ alignSelf: 'center', fontSize: 20, justifyContent: 'center', alignItems: 'center' }}>en</Text>
             </View>
-            <View style={{ alignItems: 'center', width: "30%", height: 50, backgroundColor: 'skyblue' }}>
-              <Picker selectedValue={selectedValue} style={{ height: 50, width: "100%" }} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                {options2.map((item, index) => <Picker.Item label={item.label} value={item.value} />)}
-              </Picker>
+            <View style={{ alignItems: 'center', width: "30%", height: 50, backgroundColor: 'skyblue', justifyContent: 'center', alignItems: 'center' }}>
+              <TextInput style={{ alignSelf: 'center', fontSize: 20, justifyContent: 'center', alignItems: 'center' }} onChangeText={text => onChangeTextInput(text)} value={"DI01"} editable={false} />
             </View>
           </View>
           <Subheading>y estas salidas:</Subheading>
@@ -47,17 +47,15 @@ function SimpleView({ navigation }) {
             <View style={{ width: "10%", height: 50, justifyContent: 'center', alignItems: 'center' }}>
               <Text style={{ alignSelf: 'center', fontSize: 20, justifyContent: 'center', alignItems: 'center' }}>en</Text>
             </View>
-            <View style={{ alignItems: 'center', width: "30%", height: 50, backgroundColor: 'skyblue' }}>
-              <Picker selectedValue={selectedValue} style={{ height: 50, width: "100%" }} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                {options2.map((item, index) => <Picker.Item label={item.label} value={item.value} />)}
-              </Picker>
-            </View>
+              <View style={{ alignItems: 'center', width: "30%", height: 50, backgroundColor: 'skyblue', justifyContent: 'center', alignItems: 'center' }}>
+                <TextInput style={{ alignSelf: 'center', fontSize: 20, justifyContent: 'center', alignItems: 'center' }} onChangeText={text => onChangeTextInput(text)} value={"DO01"} editable={false} />
+              </View>
           </View>
           <View style={{ margin: 10 }}>
-          <Paragraph>Toca sobre los cuadrados azules para cambiar los nombres por defecto, que son los recomendados.</Paragraph>
+            <Paragraph>Toca sobre los cuadrados azules para cambiar los nombres por defecto, que son los recomendados.</Paragraph>
             <View style={{ flexDirection: 'row', marginVertical: 20 }}>
               <View style={{ width: "46%", backgroundColor: 'powderblue' }}>
-              <Button title="Vista Avanzada" onPress={() => navigation.push('AdvancedView')} />
+                <Button title="Vista Avanzada" onPress={() => navigation.push('AdvancedView')} />
               </View>
             </View>
             <View style={styles.buttons}>

@@ -7,8 +7,9 @@ import { urlBackEnd } from "../src/Functions/functions";
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import Appbar from "../components/Appbar/Appbar";
 import { Avatar, FAB, Chip, Title, Card, List } from 'react-native-paper';
-// TAB VIEW
 
+
+// TAB VIEW
 dataPulsadores = {
     tableHead: ['Usa los pines'],
     tableData: [
@@ -121,10 +122,13 @@ const MyUIScreen = ({ navigation }) => {
 
     }
 
-
+    function onclick(item) {
+        console.log(item);
+        navigation.push("SimpleView", { item })
+    }
     return (
         <>
-            {/* <Appbar/> */}
+            <Appbar title="Mis UI" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />
@@ -163,21 +167,17 @@ const MyUIScreen = ({ navigation }) => {
                                 <View>
                                     {dataUserOriginalList.map((item, index) =>
                                         <View key={index}>
-                                            <CardProbing key={index} assets={item.assets} type={item.type} titleCard={item.name} text={item.description}
-                                                data={dataPulsadores} isAvaiable={item.isAvaiable} usedIn={item.usedIn} urlDetail={item.urlDetail} />
+                                            <CardProbing key={index} onclick={() => onclick(item)} assets={item.assets} type={item.type} titleCard={item.name} text={item.description}
+                                                data={dataPulsadores} isAvaiable={item.isAvaiable} usedIn={item.usedIn} urlDetail={item.urlDetail} pins={item.pins}/>
                                         </View>
                                     )}
                                 </View>
                             </ScrollView>
                             {isLoading ?
-                                <>
-                                </>
+                                <></>
                                 :
                                 <View style={styles.buttons} >
-                                    <FAB open={true} icon={'plus'} fabStyle={{ backgroundColor: "blue" }} style={{ backgroundColor: '#2096F3' }}
-                                        label="Continuar" disabled={false}
-                                        onPress={() => navigation.push('SimpleView')}
-                                    />
+                                    <FAB open={true} icon={'plus'} fabStyle={{ backgroundColor: "blue" }} style={{ backgroundColor: '#2096F3' }} label="Continuar" disabled={false} onPress={() => navigation.push('SimpleView')} />
                                 </View>}
                         </View>
                     </ScrollView>

@@ -7,7 +7,7 @@ import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { Title } from 'react-native-paper';
 import SelectInput from '@tele2/react-native-select-input';  //ANDA SOLO EN ANDROID
 import Input from '../components/Input/Input.js';
-
+import Appbar from "../components/Appbar/Appbar";
 
 var urlFront = urlFrontEnd();
 var urlBack = urlBackEnd();
@@ -89,7 +89,7 @@ const DeleteResourceScreen = ({ navigation }) => {
 
     return (
         <>
-            {/* <Appbar/> */}
+            <Appbar title="Deleting resource" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />

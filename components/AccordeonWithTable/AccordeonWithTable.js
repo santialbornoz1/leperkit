@@ -1,65 +1,66 @@
 import React from 'react';
-import { Navigation } from 'react-native-navigation';
-import styles from '../../styles';
-import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { List, Avatar, Card, Button, Title, Paragraph, DataTable } from 'react-native-paper';
+import { ScrollView } from 'react-native';
 
-function Prueba({ navigation, props }) {
+// function AccordeonWithTable({ navigation, props }) {
+const AccordeonWithTable = (props) => {
     const [expanded, setExpanded] = React.useState(true);
     const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
     const handlePress = () => setExpanded(!expanded);
     return (
         <>
+        <ScrollView>
             <List.Section title="Recursos" >
                 <List.Accordion
-                    title="Ver recursos asignados actualmente"
+                    title={props.title}
                     left={props => { }} >
                     <DataTable style={{ paddingLeft: 0, backgroundColor: "#EEEEEE" }}>
                         <DataTable.Header >
-                            <DataTable.Title>Pines</DataTable.Title>
-                            <DataTable.Title >Recurso asociado</DataTable.Title>
-                            <DataTable.Title >Descripcion</DataTable.Title>
+                            <DataTable.Title style={{justifyContent: 'center'}}>Pines</DataTable.Title>
+                            <DataTable.Title style={{justifyContent: 'center'}}>Recurso asociado</DataTable.Title>
+                            <DataTable.Title style={{justifyContent: 'center'}}>Descripcion</DataTable.Title>
                         </DataTable.Header>
                         <DataTable.Row>
-                            <DataTable.Cell>31Y1</DataTable.Cell>
-                            <DataTable.Cell >DO01</DataTable.Cell>
-                            <DataTable.Cell >Toma cafetera</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>31Y1</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>DO01</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>Toma cafetera</DataTable.Cell>
                         </DataTable.Row>
                         <DataTable.Row>
-                            <DataTable.Cell>31Y2</DataTable.Cell>
-                            <DataTable.Cell >DI02</DataTable.Cell>
-                            <DataTable.Cell>Pulsador</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>31Y2</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>DI02</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>Pulsador</DataTable.Cell>
                         </DataTable.Row>
                         <DataTable.Row>
-                            <DataTable.Cell>31R1</DataTable.Cell>
-                            <DataTable.Cell ></DataTable.Cell>
-                            <DataTable.Cell ></DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>31R1</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}></DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}></DataTable.Cell>
                         </DataTable.Row>
                         <DataTable.Row>
-                            <DataTable.Cell>31R2</DataTable.Cell>
-                            <DataTable.Cell ></DataTable.Cell>
-                            <DataTable.Cell ></DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>31R2</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}></DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}></DataTable.Cell>
                         </DataTable.Row>
                         <DataTable.Row>
-                            <DataTable.Cell>31R3</DataTable.Cell>
-                            <DataTable.Cell >PW01</DataTable.Cell>
-                            <DataTable.Cell>Tira de led blanca</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>31R3</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>PW01</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>Tira de led blanca</DataTable.Cell>
                         </DataTable.Row>
                         <DataTable.Row>
-                            <DataTable.Cell>31G1</DataTable.Cell>
-                            <DataTable.Cell >TR01</DataTable.Cell>
-                            <DataTable.Cell >Luz techo</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>31G1</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>TR01</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>Luz techo</DataTable.Cell>
                         </DataTable.Row>
                         <DataTable.Row>
-                            <DataTable.Cell>31G2</DataTable.Cell>
-                            <DataTable.Cell >TR02</DataTable.Cell>
-                            <DataTable.Cell >Ventilador techo</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>31G2</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>TR02</DataTable.Cell>
+                            <DataTable.Cell style={{justifyContent: 'center'}}>Ventilador techo</DataTable.Cell>
                         </DataTable.Row>
                     </DataTable>
                 </List.Accordion>
             </List.Section>
+            </ScrollView>
         </>
     )
 }
 
-export default Prueba;
+export default AccordeonWithTable;

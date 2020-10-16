@@ -5,7 +5,6 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import AddNewUIScreen from './routes/AddNewUIScreen';
 import HomeScreen from './routes/Home';
-import DrawerScreen from './routes/DrawerScreen';
 import LoginScreen from './routes/Login';
 import DetalleScreen from './routes/Detail';
 import UIScreen from './routes/UI';
@@ -24,7 +23,6 @@ import DeleteResourceScreen from './routes/DeleteResourceScreen';
 import NewLeperkitScreen from './routes/NewLeperkitScreen';
 import ModulesInstalledScreen from './routes/ModulesInstalledScreen';
 import MyUIScreen from './routes/MyUIScreen';
-import AssignPinScreen from './routes/AssignPinScreen';
 import AddComponentOrExternalCircuitScreen from './routes/AddComponentOrExternalCircuitScreen';
 import AdvancedViewScreen from './routes/AdvancedView';
 import SimpleViewScreen from './routes/SimpleView';
@@ -32,7 +30,7 @@ import Prueba2Screen from './routes/Prueba2';
 import ListLbbsScreen from './routes/ListLbbs';
 import ViewLbbDetailScreen from './routes/ViewLbbDetail';
 import LbbSelectedScreen from './routes/LbbSelected';
-
+import RegisterScreen from './routes/Register';
 
 const AppNavigator = createStackNavigator({
   Login: {
@@ -43,75 +41,153 @@ const AppNavigator = createStackNavigator({
   },
   Home: {
     screen: HomeScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Register: {
+    screen: RegisterScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   ListLbbs : {
     screen: ListLbbsScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   ViewLbbDetail : {
     screen: ViewLbbDetailScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   NewLeperkit: {
     screen: NewLeperkitScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   LbbSelected: {
     screen: LbbSelectedScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   MyUI: {
     screen: MyUIScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   ModulesInstalled: {
     screen: ModulesInstalledScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   Detalle: {
     screen: DetalleScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   OptionUI: {
     screen: UIScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   OptionModules: {
-    screen: OptionModuleScreen,               
+    screen: OptionModuleScreen, 
+    navigationOptions: {
+      header: null,
+    },              
   },
   OptionExternalCircuits: {
-    screen: OptionExternalCircuitsScreen,               
+    screen: OptionExternalCircuitsScreen,
+    navigationOptions: {
+      header: null,
+    },               
   },
   UIDetail: {
     screen: UIDetailScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   AddNewUI : {
     screen: AddNewUIScreen,
+    navigationOptions: {
+      header: null,
+    },
   }, 
   AllUI : {
     screen: AllUIScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   Plot : {
     screen: PlotScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   ConfigurePlot : {
     screen: ConfigurePlotScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
-  Assignpin : {
+  Assignpin : {                                 //VER
     screen: AssignpinScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   ReadResource : {
     screen: ReadResourceScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   SetResource : {
     screen: SetResourceScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   DeleteResource : {
     screen: DeleteResourceScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   AddComponentOrExternalCircuit : {
     screen: AddComponentOrExternalCircuitScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   AdvancedView : {
     screen: AdvancedViewScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   SimpleView : {
     screen: SimpleViewScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   Prueba2 : {
     screen: Prueba2Screen,
+    navigationOptions: {
+      header: null,
+    },
   },
 }, { initialRouteName: 'Home' });
 

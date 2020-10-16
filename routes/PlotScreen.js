@@ -38,7 +38,7 @@ function PlotScreen({ navigation }) {
     }
     return (
         <>
-            {/* <Appbar/> */}
+            <Appbar title="Plot screen" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />

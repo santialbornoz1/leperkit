@@ -18,6 +18,7 @@ import AccordeonWithTable from "../components/AccordeonWithTable/AccordeonWithTa
 import options from "../data/selectInput";
 import options2 from "../data/selectInput2";
 
+
 function AdvancedView({ navigation }) {
     const [expanded, setExpanded] = React.useState(true);
     const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
@@ -35,10 +36,11 @@ function AdvancedView({ navigation }) {
 
     return (
         <>
+            <Appbar title="Advanced view" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.container}>
-                        <AccordeonWithTable />
+                        <AccordeonWithTable title="Ver recursos asignados actualmente" />
                         <Card style={{ backgroundColor: "#F5F5FA", borderRadius: 36, borderWidth: 2, borderColor: '#BDBDBD', margin: 10 }}>
                             <Card.Title title="Display OLED 128x64" />
                             <Card.Content>

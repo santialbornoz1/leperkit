@@ -10,7 +10,7 @@ import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import AwesomeAlert from 'react-native-awesome-alerts';
 import { Avatar, FAB, Chip, Title, Card, List } from 'react-native-paper';
 import assets from '../assets/assets.js';
-
+import Appbar from "../components/Appbar/Appbar";
 
 function OptionModuleScreen({ navigation }) {
   const [expanded, setExpanded] = React.useState(true);
@@ -158,7 +158,7 @@ function OptionModuleScreen({ navigation }) {
 
   return (
     <>
-      {/* <Appbar/> */}
+      <Appbar title="Elige los modulos" navigation={navigation} hasBack={true} />
       <View style={styles.container}>
         {isLoading ?
           <Spinner />

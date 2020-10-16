@@ -8,6 +8,8 @@ import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { FAB, Chip, Title } from 'react-native-paper';
 import axios from "axios";
 import { TabView, SceneMap } from 'react-native-tab-view';
+import Appbar from "../components/Appbar/Appbar";
+
 
 dataPulsadores = {
     tableHead: ['Usa los pines'],
@@ -61,7 +63,7 @@ function UIDetailScreen({ navigation }) {
     }
     return (
         <>
-            {/* <Appbar/> */}
+            <Appbar title="UI Details" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />

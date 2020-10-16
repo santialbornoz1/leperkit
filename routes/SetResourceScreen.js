@@ -10,6 +10,7 @@ import SelectInput from '@tele2/react-native-select-input';  //ANDA SOLO EN ANDR
 // import RNPickerSelect from 'react-native-picker-select';
 import Input from '../components/Input/Input.js';
 import options from "../data/selectInput";
+import Appbar from "../components/Appbar/Appbar";
 
 var urlFront = urlFrontEnd();
 var urlBack = urlBackEnd();
@@ -68,7 +69,7 @@ const ReadResourceScreen = ({ navigation }) => {
 
     return (
         <>
-            {/* <Appbar/> */}
+            <Appbar title="Setting resource" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />

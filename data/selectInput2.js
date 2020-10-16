@@ -1,12 +1,17 @@
 const options = [
     {
+        value: 'Elige la opcion',
+        label: 'Elige la opcion',
+    },
+    {
         value: '01',
         label: '01',
     },
     {
         value: '02',
         label: '02',
-    }, {
+    },
+    {
         value: '03',
         label: '03',
     }, {
@@ -24,6 +29,25 @@ const options = [
     {
         value: '07',
         label: '07',
+    },
+    {
+        value: '08',
+        label: '08',
+    }, {
+        value: '09',
+        label: '09',
+    },
+    {
+        value: '10',
+        label: '10',
+    },
+    {
+        value: '11',
+        label: '11',
+    },
+    {
+        value: '12',
+        label: '13',
     }
 ];
 

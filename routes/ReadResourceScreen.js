@@ -9,7 +9,7 @@ import { FAB, Chip, Title } from 'react-native-paper';
 import SelectInput from '@tele2/react-native-select-input';  //ANDA SOLO EN ANDROID
 // import RNPickerSelect from 'react-native-picker-select';
 import Input from '../components/Input/Input.js';
-
+import Appbar from "../components/Appbar/Appbar";
 
 var urlFront = urlFrontEnd();
 var urlBack = urlBackEnd();
@@ -111,7 +111,7 @@ const ReadResourceScreen = ({ navigation }) => {
     }
     return (
         <>
-            {/* <Appbar/> */}
+             <Appbar title="Reading resource" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />

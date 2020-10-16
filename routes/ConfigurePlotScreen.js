@@ -6,7 +6,7 @@ import CardProbing from '../../frontend/components/Card/CardSimple.js';
 import { urlFrontEnd, urlBackEnd } from "../src/Functions/functions";
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import { FAB, Chip, Title } from 'react-native-paper';
-import Appbar from "../components/Appbar/Appbar"
+import Appbar from "../components/Appbar/Appbar";
 import { Checkbox, RadioButton } from 'react-native-paper';
 
 
@@ -49,7 +49,7 @@ const ConfigurePlotScreen = ({ navigation }) => {
 
     return (
         <>
-            {/* <Appbar/> */}
+            <Appbar title="Resources" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />
