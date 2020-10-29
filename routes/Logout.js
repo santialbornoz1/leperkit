@@ -14,7 +14,9 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 import Input from '../components/Input/Input.js';
 import SelectInput from '@tele2/react-native-select-input';  //ANDA SOLO EN ANDROID
 
-function Prueba2({ navigation }) {
+function Logout({ navigation }) {
+
+alert("Cerrar sesion")
 
   return (
     <>
@@ -25,4 +27,4 @@ function Prueba2({ navigation }) {
   )
 }
 
-export default Prueba2;
+export default Logout;

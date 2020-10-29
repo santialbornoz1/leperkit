@@ -14,26 +14,27 @@ const Table2 = (props) => {
     return (
         <>
             {/* <ScrollView> */}
-            <DataTable style={{ paddingLeft: 0, backgroundColor: "#EEEEEE", marginBottom: 10 }}>
-                <DataTable.Header >
-                    <DataTable.Title style={{ justifyContent: 'center' }}>{props.header1}</DataTable.Title>
-                    <DataTable.Title style={{ justifyContent: 'center' }}>{props.header2}</DataTable.Title>
-                </DataTable.Header>
-                {result.map((item, index) =>
-                    <DataTable.Row>
-                        {item[1] ?
-                            <>
-                                <DataTable.Cell style={{ justifyContent: 'center' }}>{item[0]}</DataTable.Cell>
-                                <DataTable.Cell style={{ justifyContent: 'center' }}>X</DataTable.Cell>
-                            </>
-                            :
-                            <></>
-                        }
+            <View style={{ margin: 15 }}>
+                <DataTable style={{ paddingLeft: 0, backgroundColor: "#EEEEEE", marginBottom: 10 }}>
+                    <DataTable.Header >
+                        <DataTable.Title style={{ justifyContent: 'center' }}>{props.header1}</DataTable.Title>
+                        <DataTable.Title style={{ justifyContent: 'center' }}>{props.header2}</DataTable.Title>
+                    </DataTable.Header>
+                    {result.map((item, index) =>
+                        <DataTable.Row key={index}>
+                            {item[1] ?
+                                <>
+                                    <DataTable.Cell style={{ justifyContent: 'center' }}>{item[0]}</DataTable.Cell>
+                                    <DataTable.Cell style={{ justifyContent: 'center' }}>X</DataTable.Cell>
+                                </>
+                                :
+                                <></>
+                            }
 
-                    </DataTable.Row>
-                )}
-
-            </DataTable>
+                        </DataTable.Row>
+                    )}
+                </DataTable>
+            </View>
             {/* </ScrollView> */}
         </>
     )

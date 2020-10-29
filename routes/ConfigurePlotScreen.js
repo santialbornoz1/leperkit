@@ -34,13 +34,13 @@ const ConfigurePlotScreen = ({ navigation }) => {
     const onContinue = (id) => {
         switch (id) {
             case 1:
-                navigation.push("ReadResource", {options})
+                navigation.navigate("ReadResource", {options})
                 return;
             case 2:
-                navigation.push("SetResource", {options})
+                navigation.navigate("SetResource", {options})
                 return;
             case 3:
-                navigation.push("DeleteResource", {options})
+                navigation.navigate("DeleteResource", {options})
                 return;
             default:
                 alert("B")

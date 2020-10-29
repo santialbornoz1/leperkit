@@ -8,13 +8,13 @@ import Appbar from "../components/Appbar/Appbar"
 
 function DetalleScreen({ navigation }) {
   const handleChangeInput = (e) => {
-    navigation.push('OptionUI');
+    navigation.navigate('OptionUI');
   }
   const goToModules = (e) => {
-    navigation.push('OptionModules');
+    navigation.navigate('OptionModules');
   }
   const goToExternalCircuits = (e) => {
-    navigation.push('OptionExternalCircuits');
+    navigation.navigate('OptionExternalCircuits');
   }
   return (
     <>

@@ -148,7 +148,7 @@ function OptionModuleScreen({ navigation }) {
       }
     }
     if (!showAlert) {
-      navigation.push('Plot', {models2});
+      navigation.navigate('Plot', {models2});
     }
   }
 

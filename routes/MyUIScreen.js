@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styles from '../styles'
 import { useState, useEffect } from 'react';
-import { Text, View, Button, ScrollView, Dimensions } from 'react-native';
+import { Text, View, Button, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import CardProbing from '../../frontend/components/Card/CardSimple.js';
 import { urlBackEnd } from "../src/Functions/functions";
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import Appbar from "../components/Appbar/Appbar";
-import { Avatar, FAB, Chip, Title, Card, List } from 'react-native-paper';
+import { Avatar, FAB, Chip, Title, Card, List, Subheading } from 'react-native-paper';
 
 
 // TAB VIEW
@@ -41,14 +41,16 @@ const MyUIScreen = ({ navigation }) => {
     const [dataUserOriginalList, setDataUserOriginalList] = useState([]);
     const [isLoading, setisLoading] = useState(true);
     useEffect(() => {
-        fetch(urlBack + "allUIModules")
+        fetch(urlBack + "api/myUIModules", {
+            method: 'POST',
+        })
             .then((response) => response.json())
             .then((responseData) => {
+                console.log(responseData)
                 setDataUser(responseData);
                 setDataUserOriginalList(responseData);
                 setisLoading(false)
             })
-
     }, []);
 
     // FAB
@@ -124,11 +126,11 @@ const MyUIScreen = ({ navigation }) => {
 
     function onclick(item) {
         console.log(item);
-        navigation.push("SimpleView", { item })
+        navigation.navigate("SimpleView", { item })
     }
     return (
         <>
-            <Appbar title="Mis UI" navigation={navigation} hasBack={true} />
+            <Appbar title="Mis User Interface" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 {isLoading ?
                     <Spinner />
@@ -137,7 +139,8 @@ const MyUIScreen = ({ navigation }) => {
                         <View style={styles.container}>
                             <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }} >
                                 <View style={styles.containerChip} >
-                                    <Title>Filtros (tiene que traer los modulos de MI catalogo)</Title>
+                                    <Title>Estos son tus modulos</Title>
+                                    <Title>Filtros</Title>
                                     <View style={styles.rowChip}>
                                         <Chip style={styles.chip} name="in" selected={stateIn} onPress={() => chipSelect(1)} style={stateIn ? styles.chipSelected : styles.chipNotSelected}>
                                             <Text style={styles.chipText}>In</Text>
@@ -161,24 +164,21 @@ const MyUIScreen = ({ navigation }) => {
                                         </Chip>
                                     </View>
                                 </View>
-                                <View style={styles.buttons}>
-                                    <Button success title="Aplicar cambios" onPress={() => applyChanges()} />
-                                </View>
+                                <TouchableOpacity onPress={() => applyChanges()}>
+                                    <View style={styles.button}>
+                                        <Text>Aplicar cambios</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <Subheading> Clickea en el modulo para elegirlo</Subheading>
                                 <View>
                                     {dataUserOriginalList.map((item, index) =>
                                         <View key={index}>
                                             <CardProbing key={index} onclick={() => onclick(item)} assets={item.assets} type={item.type} titleCard={item.name} text={item.description}
-                                                data={dataPulsadores} isAvaiable={item.isAvaiable} usedIn={item.usedIn} urlDetail={item.urlDetail} pins={item.pins}/>
+                                                data={dataPulsadores} isAvaiable={item.isAvaiable} usedIn={item.usedIn} urlDetail={item.urlDetail} pins={item.pins} />
                                         </View>
                                     )}
                                 </View>
                             </ScrollView>
-                            {isLoading ?
-                                <></>
-                                :
-                                <View style={styles.buttons} >
-                                    <FAB open={true} icon={'plus'} fabStyle={{ backgroundColor: "blue" }} style={{ backgroundColor: '#2096F3' }} label="Continuar" disabled={false} onPress={() => navigation.push('SimpleView')} />
-                                </View>}
                         </View>
                     </ScrollView>
                 }

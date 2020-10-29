@@ -17,7 +17,8 @@ import SelectInput from '@tele2/react-native-select-input';  //ANDA SOLO EN ANDR
 import AccordeonWithTable from "../components/AccordeonWithTable/AccordeonWithTable";
 import options from "../data/selectInput";
 import options2 from "../data/selectInput2";
-
+import RNPickerSelect from 'react-native-picker-select';
+import Table3 from '../components/Tables/Tables3';
 
 function AdvancedView({ navigation }) {
     const [expanded, setExpanded] = React.useState(true);
@@ -26,57 +27,106 @@ function AdvancedView({ navigation }) {
     const [textPlot, setTextPlot] = useState("Elige una opcion");
     const [selectedValue, setSelectedValue] = useState("");
     const [selectedValue2, setSelectedValue2] = useState("");
-    const width_proportion = '50%';
-    const width_proportion2 = '40%';
-
 
     function handleChangeText(a, value) {
         setTextPlot(value);
     }
+    const dataHarcoded = [
+        { "pin": "31Y1", "resource": "DO01", "description": "Alacena" },
+        { "pin": "31Y2", "resource": "DI02", "description": "Heladera" }
+    ];
 
+    function onclick(item) {
+        alert("FALTA!!")
+    }
     return (
         <>
             <Appbar title="Advanced view" navigation={navigation} hasBack={true} />
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.container}>
-                        <AccordeonWithTable title="Ver recursos asignados actualmente" />
+                        {/* <AccordeonWithTable title="Ver recursos asignados actualmente" /> */}
+                        <Title style={styles.titleDetailScreen}> Titulo </Title>
                         <Card style={{ backgroundColor: "#F5F5FA", borderRadius: 36, borderWidth: 2, borderColor: '#BDBDBD', margin: 10 }}>
                             <Card.Title title="Display OLED 128x64" />
                             <Card.Content>
                             </Card.Content>
                             <Paragraph style={{ margin: 16 }}>Pines que usa el modulo: U3 - U4</Paragraph>
-                            <View style={{ margin: 10, borderWidth: 2, borderColor: '#BDBDBD' }}>
-                                <Text style={{ margin: 10, fontSize: 20 }}>U3</Text>
-                                <View style={{ alignItems: "center", flexDirection: 'row' }}>
-                                    <Picker selectedValue={selectedValue} style={{ height: 50, width: width_proportion }} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                                        {options.map((item, index) => <Picker.Item label={item.label} value={item.value} />)}
-                                    </Picker>
-                                    <Picker selectedValue={selectedValue2} style={{ height: 50, width: width_proportion2 }} onValueChange={(itemValue, itemIndex) => setSelectedValue2(itemValue)}>
-                                        {options2.map((item, index) => <Picker.Item label={item.label} value={item.value} />)}
-                                    </Picker>
+                            <View style={{ marginTop: 10, backgroundColor: '#fff', marginHorizontal: 10 }}>
+                                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+                                    <Text style={{ marginLeft: 10, fontSize: 20, alignSelf: 'center' }}>U3</Text>
+                                    <View style={{ marginHorizontal: 10, width: '40%', height: "100%", backgroundColor: 'steelblue', padding: 10 }}>
+                                        <RNPickerSelect
+                                            onValueChange={(value) => console.log(value)}
+                                            items={[
+                                                { label: 'DI', value: 'DI' },
+                                                { label: 'DO', value: 'DO' },
+                                                { label: 'DA', value: 'DA' },
+                                            ]}
+                                        />
+                                    </View>
+                                    <View style={{ marginHorizontal: 10, width: '40%', height: "100%", backgroundColor: 'steelblue', padding: 10 }}>
+                                        <RNPickerSelect
+                                            onValueChange={(value) => console.log(value)}
+                                            style={{ padding: 20 }}
+                                            items={[
+                                                { label: '01', value: '01' },
+                                                { label: '02', value: '02' },
+                                                { label: '03', value: '03' },
+                                            ]}
+                                        />
+                                    </View>
                                 </View>
-                                <Input isSelectInput={false} name="description" type={"text"} label={"Descripcion"} placeholder={"Escribe una descripcion"}
-                                    backgroundColor={"#F5F5FA"} editable={true} maxLength={2} keyboardType={'default'} />
-                            </View>
-                            <View style={{ margin: 10, borderWidth: 2, borderColor: '#BDBDBD' }}>
-                                <Text style={{ margin: 10, fontSize: 20 }}>U4</Text>
-                                <View style={{ alignItems: "center", flexDirection: 'row' }}>
-                                    <Picker selectedValue={selectedValue} style={{ height: 50, width: width_proportion }} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                                        {options.map((item, index) => <Picker.Item label={item.label} value={item.value} />)}
-                                    </Picker>
-                                    <Picker selectedValue={selectedValue2} style={{ height: 50, width: width_proportion2 }} onValueChange={(itemValue, itemIndex) => setSelectedValue2(itemValue)}>
-                                        {options2.map((item, index) => <Picker.Item label={item.label} value={item.value} />)}
-                                    </Picker>
+                                <View>
+                                    <Input isSelectInput={false} name="description" type={"text"} label={"Descripcion"} placeholder={"Escribe una descripcion"}
+                                        backgroundColor={"#fff"} editable={true} maxLength={2} keyboardType={'default'} />
                                 </View>
-                                <Input isSelectInput={false} name="description" type={"text"} label={"Descripcion"} placeholder={"Escribe una descripcion"}
-                                    backgroundColor={"#F5F5FA"} editable={true} maxLength={2} keyboardType={'default'} />
                             </View>
-                            <View style={{ alignSelf: 'flex-end', margin: 14 }}>
-                                <Button title="Aplicar" />
-                            </View>
+                            <View style={{ marginTop: 10, backgroundColor: '#fff', marginHorizontal: 10 }}>
+                                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
 
+                                    <Text style={{ marginLeft: 10, fontSize: 20, alignSelf: 'center' }}>U4</Text>
+                                    <View style={{ marginHorizontal: 10, width: '40%', height: "100%", backgroundColor: 'steelblue', padding: 10 }}>
+                                        <RNPickerSelect
+                                            onValueChange={(value) => console.log(value)}
+                                            items={[
+                                                { label: 'DI', value: 'DI' },
+                                                { label: 'DO', value: 'DO' },
+                                                { label: 'DA', value: 'DA' },
+                                            ]}
+                                        />
+                                    </View>
+                                    <View style={{ marginHorizontal: 10, width: '40%', height: "100%", backgroundColor: 'steelblue', padding: 10 }}>
+                                        <RNPickerSelect
+                                            onValueChange={(value) => console.log(value)}
+                                            style={{ padding: 20 }}
+                                            items={[
+                                                { label: '01', value: '01' },
+                                                { label: '02', value: '02' },
+                                                { label: '03', value: '03' },
+                                            ]}
+                                        />
+                                    </View>
+                                </View>
+                                <View>
+                                    <Input isSelectInput={false} name="description" type={"text"} label={"Descripcion"} placeholder={"Escribe una descripcion"}
+                                        backgroundColor={"#fff"} editable={true} maxLength={2} keyboardType={'default'} />
+                                </View>
+                            </View>
+                            <TouchableOpacity>
+                                <View style={styles.button}>
+                                    <Text>Aplicar</Text>
+                                </View>
+                            </TouchableOpacity>
                         </Card>
+                        <Subheading> Recursos asignados actualmente: </Subheading>
+                        <Table3 navigation={navigation} onclick={(item) => onclick(item)} header1={"ID"} header2={'Modelo'} header3={"Descripcion"} data={dataHarcoded} />
+
+                        <TouchableOpacity onPress={() => navigation.navigate('SimpleView')}>
+                            <View style={styles.button}>
+                                <Text>Volver a vista simple</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </View>

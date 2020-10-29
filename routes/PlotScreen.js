@@ -34,7 +34,7 @@ function PlotScreen({ navigation }) {
     }
 
     const onContinue = () => {
-        navigation.push('Assignpin', {options});
+        navigation.navigate('Assignpin', {options});
     }
     return (
         <>

@@ -75,7 +75,7 @@ function AssignPinScreen({ navigation }) {
   }
 
   const onContinue = () => {
-    navigation.push("ConfigurePlot", { options })
+    navigation.navigate("ConfigurePlot", { options })
   }
 
   function hideAlert() {

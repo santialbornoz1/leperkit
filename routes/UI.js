@@ -12,7 +12,7 @@ function UIScreen({ navigation }) {
       <ScrollView contentContainerStyle={{ flex: 1, borderColor: 'black', borderWidth: 0 }} scrollEnabled={scrollEnabled}>
         <Text style={styles.titleDetailScreen}>User Interface</Text>
         <View style={styles.buttons}>
-          <Button title="Ver mis UI" onPress={() => navigation.push('UIDetail')} />
+          <Button title="Ver mis UI" onPress={() => navigation.navigate('UIDetail')} />
         </View>
         <View style={styles.buttons}>
           <Button title="Ver Catalogo" onPress={()=>{ Linking.openURL("http://africau.edu/images/default/sample.pdf")}} />

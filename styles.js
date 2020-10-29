@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
@@ -36,7 +36,18 @@ export default StyleSheet.create({
     buttons: {
         margin: 10,
         marginRight: 50,
-        marginLeft: 50
+        marginLeft: 50,
+        borderRadius: 20,
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        padding: 10
+    },
+    button: {
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        padding: 10,
+        margin: 30,
+        tintColor: 'red'
     },
     containerSpinner: {
         flex: 1,
@@ -50,7 +61,7 @@ export default StyleSheet.create({
     containerChip: {
         flex: 1,
         alignItems: "center",
-        
+
     },
     rowChip: {
         flexDirection: 'row',
@@ -72,7 +83,7 @@ export default StyleSheet.create({
     },
     chipNotSelected: {
         backgroundColor: "#ebebeb",
-        
+
     },
     containerSpinner: {
         flex: 1,
@@ -87,22 +98,22 @@ export default StyleSheet.create({
     ///BUTTON
     containerView: {
         flex: 1,
-      },
-      loginScreenContainer: {
+    },
+    loginScreenContainer: {
         flex: 1,
         backgroundColor: "#fafafa"
-      },
-      logoText: {
+    },
+    logoText: {
         fontSize: 40,
         fontWeight: "800",
         marginTop: 150,
         marginBottom: 30,
         textAlign: 'center',
-      },
-      loginFormView: {
+    },
+    loginFormView: {
         flex: 1
-      },
-      loginFormTextInput: {
+    },
+    loginFormTextInput: {
         height: 43,
         fontSize: 14,
         borderRadius: 5,
@@ -114,34 +125,50 @@ export default StyleSheet.create({
         marginRight: 15,
         marginTop: 5,
         marginBottom: 5,
-      
-      },
-      loginButton: {
+
+    },
+    loginButton: {
         backgroundColor: '#3897f1',
         borderRadius: 5,
         height: 45,
         marginTop: 10,
-      },
-      fbLoginButton: {
+    },
+    fbLoginButton: {
         height: 45,
         marginTop: 10,
         backgroundColor: 'transparent',
-      },
+    },
     ///Refresh Control
     containerRefreshControl: {
         flex: 1,
-      },
-      scrollViewRefreshControl: {
+    },
+    scrollViewRefreshControl: {
         flex: 1,
         backgroundColor: 'pink',
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      cardContainer: {
+    },
+    cardContainer: {
         margin: 20,
         borderRadius: 10,
         backgroundColor: '#f7f7f7',
         borderColor: '#D2DBE0',
         borderWidth: 2,
+    },
+    //COLORS
+    redColor: {
+        backgroundColor: "red",
+    },
+    blueColor: {
+        backgroundColor: "blue",
+    },
+    greenColor: {
+        backgroundColor: "green",
+    },
+    blackColor: {
+        backgroundColor: "black",
+    },
+    yellowColor: {
+        backgroundColor: "yellow",
     }
 });

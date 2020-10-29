@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { useState } from "react";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import CustomDrawerContentComponent from './components/Drawer/Drawer';
+import { NavigationContainer , DarkTheme } from '@react-navigation/native';
 import AddNewUIScreen from './routes/AddNewUIScreen';
 import HomeScreen from './routes/Home';
 import LoginScreen from './routes/Login';
@@ -26,172 +29,228 @@ import MyUIScreen from './routes/MyUIScreen';
 import AddComponentOrExternalCircuitScreen from './routes/AddComponentOrExternalCircuitScreen';
 import AdvancedViewScreen from './routes/AdvancedView';
 import SimpleViewScreen from './routes/SimpleView';
-import Prueba2Screen from './routes/Prueba2';
+import Logout from './routes/Logout';
 import ListLbbsScreen from './routes/ListLbbs';
 import ViewLbbDetailScreen from './routes/ViewLbbDetail';
 import LbbSelectedScreen from './routes/LbbSelected';
 import RegisterScreen from './routes/Register';
+import { SafeAreaView, ScrollView } from 'react-native';
+import { DrawerItems } from "react-navigation-drawer";
+import AuthLoadingScreen from './routes/AuthLoading'
 
-const AppNavigator = createStackNavigator({
+//class Hidden extends React.Component {
+function Hidden({ navigation }) { return null; }
+
+const AppNavigator = createDrawerNavigator({
+  AuthLoading: {
+    screen: AuthLoadingScreen,
+  },
   Login: {
     screen: LoginScreen,
-     navigationOptions: {
+    navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />,
+      drawerLockMode: 'locked-closed' //NO PERMITE ABRIR DRAWER EN LOGIN
     },
   },
   Home: {
     screen: HomeScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: "Home",
+      // drawerIcon : <Icon name={'heart'} />
     },
   },
   Register: {
     screen: RegisterScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  ListLbbs : {
+  ListLbbs: {
     screen: ListLbbsScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  ViewLbbDetail : {
+  ViewLbbDetail: {
     screen: ViewLbbDetailScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
   NewLeperkit: {
     screen: NewLeperkitScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
   LbbSelected: {
     screen: LbbSelectedScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
   MyUI: {
     screen: MyUIScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
   ModulesInstalled: {
     screen: ModulesInstalledScreen,
     navigationOptions: {
       header: null,
+      // drawerLabel: <Hidden />
+      drawerLabel: "Modulos instalados"
     },
   },
   Detalle: {
     screen: DetalleScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
   OptionUI: {
     screen: UIScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
   OptionModules: {
-    screen: OptionModuleScreen, 
+    screen: OptionModuleScreen,
     navigationOptions: {
       header: null,
-    },              
+      drawerLabel: <Hidden />
+    },
   },
   OptionExternalCircuits: {
     screen: OptionExternalCircuitsScreen,
     navigationOptions: {
       header: null,
-    },               
+      drawerLabel: <Hidden />
+    },
   },
   UIDetail: {
     screen: UIDetailScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  AddNewUI : {
+  AddNewUI: {
     screen: AddNewUIScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
-  }, 
-  AllUI : {
+  },
+  AllUI: {
     screen: AllUIScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  Plot : {
+  Plot: {
     screen: PlotScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  ConfigurePlot : {
+  ConfigurePlot: {
     screen: ConfigurePlotScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  Assignpin : {                                 //VER
+  Assignpin: {                                 //VER
     screen: AssignpinScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  ReadResource : {
+  ReadResource: {
     screen: ReadResourceScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  SetResource : {
+  SetResource: {
     screen: SetResourceScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  DeleteResource : {
+  DeleteResource: {
     screen: DeleteResourceScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  AddComponentOrExternalCircuit : {
+  AddComponentOrExternalCircuit: {
     screen: AddComponentOrExternalCircuitScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  AdvancedView : {
+  AdvancedView: {
     screen: AdvancedViewScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  SimpleView : {
+  SimpleView: {
     screen: SimpleViewScreen,
     navigationOptions: {
       header: null,
+      drawerLabel: <Hidden />
     },
   },
-  Prueba2 : {
-    screen: Prueba2Screen,
+  Logout: {
+    screen: Logout,
     navigationOptions: {
       header: null,
+      drawerLabel: "Cerrar sesion"
     },
   },
-}, { initialRouteName: 'Home' });
+}, {
+   contentComponent: CustomDrawerContentComponent,
+  // initialRouteName: 'AuthLoading'
+  initialRouteName: 'Home'
+});
 
-export default createAppContainer(AppNavigator);
+const RootStack = createStackNavigator({
+  Main: AppNavigator,
+  MiModal: () => <Text>Lalala</Text>
+}, { mode: "modal", headerMode: "none" })
+
+
+const CustomDrawerComponent = (props) => (
+  <SafeAreaView style={{ flex: 1 }}>
+    <ScrollView>
+      <DrawerItems {...props} />
+    </ScrollView>
+  </SafeAreaView>
+)
+
+export default createAppContainer(RootStack);
 
 
 

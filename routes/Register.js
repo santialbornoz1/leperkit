@@ -57,7 +57,7 @@ function RegisterScreen({ navigation }) {
                         <TextInput autoCapitalize="none" value={inputs.password} onChangeText={subscribe('password')} placeholder="Password" placeholderColor="#c4c3cb" style={styles.loginFormTextInput} secureTextEntry={true} />
                         <TextInput autoCapitalize="none" value={inputs.repeatPassword} onChangeText={subscribe('repeatpassword')} placeholder="Repeat password" placeholderColor="#c4c3cb" style={styles.loginFormTextInput} secureTextEntry={true} />
                         <View style={styles.buttons}>
-                            <Text h1  onPress={()=> navigation.push('Login')}>Volver al menu anterior</Text>
+                            <Text h1  onPress={()=> navigation.navigate('Login')}>Volver al menu anterior</Text>
                         </View>
                         <View style={styles.buttons}>
                             <Button success title="Enviar" onPress={handleSubmit} />

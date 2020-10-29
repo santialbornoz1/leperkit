@@ -1,4 +1,6 @@
 const assetsObject = {
+  //LLBs
+    lbb3: require('../resources/images/lbb3.png'),
     modulos: require('../resources/images/modulos.jpg'),
     circuitosexternos: require('../resources/images/circuitosexternos.jpg'),
     // IN

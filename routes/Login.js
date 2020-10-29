@@ -33,14 +33,13 @@ function LoginScreen({ navigation }) {
             .then((response) => {
                 console.log(response);
                 setisLoading(false);
-                SyncStorage.set('token', 'ejemplo');
                 const result = SyncStorage.get('token');
                 console.log("result", result); // 'bar'
 
                 if (response.ok) {
                     //DEBO SETEAR COOKIE
-                  
-                    navigation.push('Home');
+                    SyncStorage.set('token', 'ejemplo');
+                    navigation.navigate('Home');
                 }
                 else {
                     setShowMessage(true);
@@ -64,17 +63,17 @@ function LoginScreen({ navigation }) {
                                     <Text style={styles.logoText}>Leperkit</Text>
                                     <TextInput autoCapitalize="none" value={inputs.email} onChangeText={subscribe('email')} placeholder="Username" placeholderColor="#c4c3cb" style={styles.loginFormTextInput} />
                                     <TextInput autoCapitalize="none" value={inputs.password} onChangeText={subscribe('password')} placeholder="Password" placeholderColor="#c4c3cb" style={styles.loginFormTextInput} secureTextEntry={true} />
-                                    <View style={styles.buttons}>
-                                        <Button success title="Login" onPress={handleSubmit} />
+                                    <View style={[styles.buttons , styles.blueColor]}>
+                                        <Button success title="Login" color="white" onPress={handleSubmit} />
                                     </View>
                                     <View style={styles.buttons}>
-                                        <Text h1 onPress={() => navigation.push('Register')}>¿No tenes cuenta? Registrate aquí</Text>
+                                        <Text h1 onPress={() => navigation.navigate('Register')}>¿No tenes cuenta? Registrate aquí</Text>
                                     </View>
                                     <View style={{ top: 100 }}>
-                                        <View style={styles.buttons}>
+                                        <View >
                                             <SocialIcon title='Sign In With Facebook' button type='facebook' />
                                         </View>
-                                        <View style={styles.buttons}>
+                                        <View>
                                             <SocialIcon title='Sign In With Google' button type='google' />
                                         </View>
                                     </View>
