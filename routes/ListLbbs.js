@@ -74,9 +74,7 @@ function ListLbbs({ navigation }) {
         "name": "1Nombre del dispositivo",
         "type": "falta"
       };
-
       all.push(asd5)
-      // console.log(all)
       setData(all);
       console.log(all.length)
     }

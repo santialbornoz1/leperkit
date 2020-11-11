@@ -1,7 +1,81 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import * as Font from "expo-font";
+import {Dimensions} from 'react-native';
+
+const getFonts = () => Font.loadAsync({
+    'roboto-light': require('./assets/fonts/Roboto-Light.ttf'),
+    'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    'roboto-medium': require('./assets/fonts/Roboto-Medium.ttf'),
+    'openSans-medium': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'monserrat-regular': require('./assets/fonts/Montserrat-Regular.ttf'),
+})
+getFonts();
+
+const {height} = Dimensions.get("screen");
+const heigth_logo = height * 0.16;
 
 export default StyleSheet.create({
-
+    containerLogin: {
+        flex: 1,
+        backgroundColor: '#009387'
+    },
+    headerLogin: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    footerLogin:{
+        flex: 2,
+        backgroundColor: "#fff",
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        paddingVertical: 30,
+        paddingHorizontal: 30
+    },
+    logoLogin: {
+        width: heigth_logo,
+        height: heigth_logo
+    },
+    textheaderLogin: {
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: 30
+    },
+    actionLogin: {
+        flexDirection: "row",
+        marginTop: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "#f2f2f2",
+        paddingBottom: 5
+    },
+    textInputLogin: {
+        flex: 1,
+        marginTop: Platform.OS === "ios" ? 0 : -12,
+        paddingLeft: 10,
+        color: "#05375a"
+    },
+    textFooterLogin: {
+        color: "#05375a",
+        fontSize: 18
+    },
+    buttonLogin: {
+        alignItems: "center",
+        marginTop: 50
+    },
+    signInLogin:{
+        width: "100%",
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10
+    },
+    textSignInLogin: {
+       fontSize: 18,
+       fontWeight: "bold"
+    },
+    fontText: {
+        fontFamily: 'monserrat-regular'
+    },
     container: {
         height: 'auto',
         flex: 1,
@@ -13,10 +87,6 @@ export default StyleSheet.create({
         width: 200,
         height: 200,
     },
-    // tinyLogo: {
-    //     width: 150,
-    //     height: 150,
-    // },
     textCenter: {
         textAlign: 'center',
         alignItems: 'center',

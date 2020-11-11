@@ -34,7 +34,8 @@ function ModulesInstalled({ navigation }) {
         setisLoading(false);
         console.log("b")
         // setisLoading(false)
-      })  
+      })
+      alert("FALTA -> TRAER LOS MODULOS RELACIONADOS CON EL LBB SELECCIONADO")  
   }, []);
 
 
@@ -97,25 +98,8 @@ function ModulesInstalled({ navigation }) {
                 <Text>Listo</Text>
               </View>
             </TouchableOpacity>
-            {/* <AwesomeAlert
-          show={showAlert}
-          showProgress={false}
-          title="AwesomeAlert"
-          message="Vas a eliminar el modulo"
-          closeOnTouchOutside={true}
-          closeOnHardwareBackPress={false}
-          showCancelButton={true}
-          showConfirmButton={true}
-          cancelText="No, cancel"
-          confirmText="Yes, delete it"
-          confirmButtonColor="#DD6B55"
-          // onCancelPressed={() => { hideAlert }}
-          onConfirmPressed={() => hideAlert() }
-        /> */}
-          </ScrollView>
-          
-        }
-        
+          </ScrollView>      
+        }     
       </View>
     </>
   )

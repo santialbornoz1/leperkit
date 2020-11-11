@@ -7,7 +7,7 @@ import { urlBackEnd } from "../src/Functions/functions";
 import Spinner from '../components/SpinnerLoading/SpinnerLoading';
 import Appbar from "../components/Appbar/Appbar";
 import { Avatar, FAB, Chip, Title, Card, List, Subheading } from 'react-native-paper';
-
+import { useFocusEffect } from '@react-navigation/native';
 
 // TAB VIEW
 dataPulsadores = {
@@ -34,25 +34,49 @@ dataTeclado4x4 = {
 
 var urlBack = urlBackEnd();
 
-const initialLayout = { width: Dimensions.get('window').width };
 
 const MyUIScreen = ({ navigation }) => {
     const [dataUser, setDataUser] = useState([]);
     const [dataUserOriginalList, setDataUserOriginalList] = useState([]);
     const [isLoading, setisLoading] = useState(true);
+
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         alert("Enter");
+    //         return () => alert("Exit");
+    //     }, [])
+    // );
+
+
     useEffect(() => {
+
+        // const unsubscribe = navigation.addListener("focus", () => {
+        //     dispatch(accion());
+        //     return unsubscribe
+        // })
         fetch(urlBack + "api/myUIModules", {
             method: 'POST',
         })
             .then((response) => response.json())
             .then((responseData) => {
-                console.log(responseData)
                 setDataUser(responseData);
                 setDataUserOriginalList(responseData);
                 setisLoading(false)
             })
-    }, []);
 
+    }, [navigation]);
+
+    // function accion(){
+    //     fetch(urlBack + "api/myUIModules", {
+    //         method: 'POST',
+    //     })
+    //         .then((response) => response.json())
+    //         .then((responseData) => {
+    //             setDataUser(responseData);
+    //             setDataUserOriginalList(responseData);
+    //             setisLoading(false)
+    //         })
+    // }
     // FAB
     const [state, setState] = React.useState({ open: false });
     const onStateChange = ({ open }) => setState({ open });
@@ -125,7 +149,7 @@ const MyUIScreen = ({ navigation }) => {
     }
 
     function onclick(item) {
-        console.log(item);
+        // console.log(item);
         navigation.navigate("SimpleView", { item })
     }
     return (

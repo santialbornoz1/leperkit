@@ -13,7 +13,6 @@ const Table2 = (props) => {
 
     return (
         <>
-            {/* <ScrollView> */}
             <View style={{ margin: 15 }}>
                 <DataTable style={{ paddingLeft: 0, backgroundColor: "#EEEEEE", marginBottom: 10 }}>
                     <DataTable.Header >
@@ -35,7 +34,6 @@ const Table2 = (props) => {
                     )}
                 </DataTable>
             </View>
-            {/* </ScrollView> */}
         </>
     )
 }

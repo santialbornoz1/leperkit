@@ -19,3 +19,4 @@
 [1028/084752.153:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
 [1028/084752.153:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
 [1028/084752.153:ERROR:exception_snapshot_win.cc(99)] thread ID 16012 not found in process
+[1102/082336.571:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)

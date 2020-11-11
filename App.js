@@ -36,7 +36,9 @@ import LbbSelectedScreen from './routes/LbbSelected';
 import RegisterScreen from './routes/Register';
 import { SafeAreaView, ScrollView } from 'react-native';
 import { DrawerItems } from "react-navigation-drawer";
-import AuthLoadingScreen from './routes/AuthLoading'
+import AuthLoadingScreen from './routes/AuthLoading';
+import MyCatalogueScreen from './routes/MyCatalogue';
+import AllCatalogueScreen from './routes/AllCatalogue';
 
 //class Hidden extends React.Component {
 function Hidden({ navigation }) { return null; }
@@ -209,6 +211,20 @@ const AppNavigator = createDrawerNavigator({
       drawerLabel: <Hidden />
     },
   },
+  MyCatalogue: {
+    screen: MyCatalogueScreen,
+    navigationOptions: {
+      header: null,
+      drawerLabel: <Hidden />
+    },
+  },
+  AllCatalogue: {
+    screen: AllCatalogueScreen,
+    navigationOptions: {
+      header: null,
+      drawerLabel: <Hidden />
+    },
+  },
   AdvancedView: {
     screen: AdvancedViewScreen,
     navigationOptions: {
@@ -232,8 +248,8 @@ const AppNavigator = createDrawerNavigator({
   },
 }, {
    contentComponent: CustomDrawerContentComponent,
-  // initialRouteName: 'AuthLoading'
-  initialRouteName: 'Home'
+   unmountInactiveRoutes: true,
+   initialRouteName: 'Login'
 });
 
 const RootStack = createStackNavigator({

@@ -6,7 +6,7 @@ import { Title, Paragraph, DataTable, Subheading, Snackbar } from 'react-native-
 import Appbar from "../components/Appbar/Appbar";
 import Table7 from "../components/Tables/Tables7";
 import Spinner from "../components/SpinnerLoading/SpinnerLoading"
-
+import SyncStorage from 'sync-storage';
 
 function LbbSelected({ navigation }) {
   const [ready, setIsReady] = useState(false);
@@ -65,8 +65,11 @@ function LbbSelected({ navigation }) {
   setTimeout(function () { setIsReady(true) }, 3000);         //TIMEOUT DE 3 SEG PARA ESPERAR
 
   function onclick(item) {
-    setSnackBarVisible(true);
-    setTimeout(function () { navigation.navigate('NewLeperkit') }, 1000); 
+    console.log("Acabas de elegir", item.model);
+    SyncStorage.set('lbbSelected', item.model);
+    // setSnackBarVisible(true);
+    navigation.navigate('NewLeperkit')
+    // setTimeout(function () { navigation.navigate('NewLeperkit') }, 1000); 
   }
 
   const onDismissSnackBar = () => setSnackBarVisible(false);
